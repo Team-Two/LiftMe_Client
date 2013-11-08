@@ -1,13 +1,13 @@
+//081113 - MtpA -	Refactor to change getDeviceID return variable to String
 //311013 - MtpA -	Changed ID data from Integer to String to reflect XML changes
 //					Changed variable name deviceID to deviceID to be more reflective of actual meaning
+//221013 - MtpA - Create class with details of the current position of the app
 
 package uk.ac.sussex.addison.m.androidmaplocation;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-//221013 - MtpA - Create class with details of the current position of the app
 
 public class UserMarker {
 
@@ -54,7 +54,7 @@ public class UserMarker {
 		markerTime = builder.markerTime;
 	} // builder constructor
 
-	public int getdeviceID() {
+	public String getDeviceID() {
 		return deviceID;
 	}
 

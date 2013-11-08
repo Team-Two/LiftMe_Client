@@ -1,4 +1,5 @@
-//311013 - MtpA - Changed ID data export from Integer to String to reflect XML changes
+//081113 - MtpA -	Refactor getMarkerID to getDeviceID
+//311013 - MtpA -	Changed ID data export from Integer to String to reflect XML changes
 
 package uk.ac.sussex.addison.m.androidmaplocation;
 
@@ -7,7 +8,7 @@ import java.io.StringWriter;
 import org.xmlpull.v1.XmlSerializer;
 import android.util.Xml;
 
-public class XMLMarkerExport {
+public class XMLExport {
 
 	public String writeMarkerXml(UserMarker vCurrMarker){
 		XmlSerializer serializer = Xml.newSerializer();
@@ -17,7 +18,7 @@ public class XMLMarkerExport {
 			serializer.startDocument("UTF-8", true);
 			serializer.startTag("", "Location");
 			serializer.startTag("", "Marker");
-			serializer.attribute("", "ID", vCurrMarker.getMarkerID());
+			serializer.attribute("", "ID", vCurrMarker.getDeviceID());
 			serializer.startTag("", "Latitude");
 			serializer.text(Double.toString(vCurrMarker.getMarkerLat()));
 			serializer.endTag("", "Latitude");
@@ -37,5 +38,5 @@ public class XMLMarkerExport {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		} 
-	}
-}
+	} // method writeMarkerXml
+} // class XMLExport
