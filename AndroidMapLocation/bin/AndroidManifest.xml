@@ -50,8 +50,8 @@
         <!-- Goolge API Key AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik  -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-<!--            android:value="AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik" />  Mark Key-->
             android:value="AIzaSyBWuLJIZE1Vo9zX-OHO5MR8rj_T1o16Qt8" />  <!-- Evgeny Key -->
+<!--            android:value="AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik" />  Mark Key-->
     </application>
  
 </manifest>
