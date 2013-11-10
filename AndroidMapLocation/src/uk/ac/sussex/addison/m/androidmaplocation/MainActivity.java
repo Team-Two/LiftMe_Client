@@ -6,23 +6,17 @@
 
 package uk.ac.sussex.addison.m.androidmaplocation;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Calendar;
 
 import uk.ac.sussex.addison.m.androidmaplocation.R;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.Settings;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -35,7 +29,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.TextView.OnEditorActionListener;
-import android.app.AlertDialog;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -173,12 +166,12 @@ public class MainActivity extends Activity implements LocationListener {
 		myMarker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).title("ME");
 		googleMap.addMarker(myMarker);
 		googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currPos, cameraZoom));
-		
-		// get the unique device ID
-		String androidId = Settings.Secure.getString(getContentResolver(),Settings.Secure.ANDROID_ID);
+
+		// get deviceID
+		String deviceId = Settings.Secure.getString(getContentResolver(),Settings.Secure.ANDROID_ID);
 
 		// invoke instance of the current marker
-		currMarker = new UserMarker.Builder(androidId, lat, lng, currDate).build();
+		currMarker = new UserMarker.Builder(deviceId, lat, lng, currDate).build();
         Toast.makeText(getBaseContext(),"Current location : " + Double.toString(lat).substring(0, 5) + "," + Double.toString(lng).substring(0, 5), Toast.LENGTH_LONG).show();
 	} // onLocationChanged
   
