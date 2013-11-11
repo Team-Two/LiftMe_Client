@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,29 +10,38 @@
         android:layout_height="match_parent"
         class="com.google.android.gms.maps.MapFragment" />
     
-    <RadioGroup
-        android:id="@+id/radio_group_list_selector"
+    <EditText
+        android:id="@+id/editText1"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:background="#80000000"
-        android:orientation="horizontal"
-        android:padding="4dp" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="numberDecimal|numberSigned" >
+    </EditText>
 
-        <RadioButton
-            android:id="@+id/radioTempBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.39"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/tempBtn" 
-            android:background="@color/sandy"
-            style="?android:attr/borderlessButtonStyle"/>
+    <ImageButton
+        android:id="@+id/providerBtn"
+        android:contentDescription="@string/caricon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="18dp"
+        android:layout_toRightOf="@+id/locationBtn"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@drawable/car"/>
 
-        <View
-            android:id="@+id/VerticalLine"
-            android:layout_width="1dip"
-            android:layout_height="match_parent"
-            android:background="#aaa" />
-    </RadioGroup>
+    <ImageButton
+        android:id="@+id/locationBtn"
+        android:contentDescription="@string/diskicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/providerBtn"
+        android:layout_alignBottom="@+id/providerBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@drawable/disk" />
 
-</FrameLayout> 
+</RelativeLayout> 

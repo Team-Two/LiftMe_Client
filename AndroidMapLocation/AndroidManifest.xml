@@ -46,11 +46,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
- 
-        <!-- Goolge API Key AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik  -->
+        
+        <activity
+            android:name=".AndroidProviderList"
+            android:label="Provider List" >
+        </activity>
+        
+        <activity
+            android:name=".ProviderRatings"
+            android:label="Provider Ratings Selected" >
+        </activity>  
+
+        <!-- Google API Key AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik  Mark's key -->
+        <!-- Google API Key AIzaSyBWuLJIZE1Vo9zX-OHO5MR8rj_T1o16Qt8 Eyvgeny's key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBWuLJIZE1Vo9zX-OHO5MR8rj_T1o16Qt8" />    
+            android:value="AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik" />    
     </application>
  
 </manifest>

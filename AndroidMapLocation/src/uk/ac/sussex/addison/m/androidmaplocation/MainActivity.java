@@ -1,3 +1,15 @@
+//111113 - MtpA -	Two ImageButtons added with corresponding icons.  Both buttons have a listener.
+//					providerBtnListener added (see above) and that creates new activity for listing providers
+
+//					Folder
+//					drawable-hdpi : Added car.png & disk.png
+//					layout : 	Changes to activity main (change layout to relative and add buttons)
+//								Added provider_list.xml (display template)
+//								Added provider_ratings.xml (display template)
+//					values :	Added provider_data.xml (list you see on the screen)
+//								Added rating_data.xml (list you see on the screen)
+//								Strings.xml amended to add a reference to both button icons
+
 //081113 - MtpA -	Refactor code.
 //					Remove independent call to Criteria and include in Provider instance creation
 //					Add call to get the unique Android ID and pass to UserMarker class
@@ -11,6 +23,7 @@ import java.util.Calendar;
 import uk.ac.sussex.addison.m.androidmaplocation.R;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.location.Criteria;
 import android.location.Location;
@@ -25,6 +38,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +50,8 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 public class MainActivity extends Activity implements LocationListener {
 
@@ -43,7 +59,8 @@ public class MainActivity extends Activity implements LocationListener {
 	private GoogleMap googleMap;
 	private Location location;
 	private LocationManager locationManager;
-	private Button myButton;
+	private ImageButton locationButton;
+	private ImageButton providerButton;
 	private MarkerOptions myMarker;
 	private String provider;
 	private UserMarker currMarker;
@@ -63,8 +80,13 @@ public class MainActivity extends Activity implements LocationListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		myButton = (Button) findViewById(R.id.radioTempBtn);
-		myButton.setOnClickListener(new buttonListener());
+
+		// show buttons
+		locationButton = (ImageButton) findViewById(R.id.locationBtn);
+		locationButton.setOnClickListener(new saveBtnListener());
+		providerButton = (ImageButton) findViewById(R.id.providerBtn);
+		providerButton.setOnClickListener(new providerBtnListener());
+
 		if (initilizeMap()) {
 			onLocationChanged(location);			
 		} else {
@@ -76,7 +98,7 @@ public class MainActivity extends Activity implements LocationListener {
 		this.putIDWindow();
 	} // method onCreate
 	
-	class buttonListener implements View.OnClickListener {
+	class saveBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
 			if (myMarker != null) {
@@ -98,6 +120,16 @@ public class MainActivity extends Activity implements LocationListener {
 		} // method onClick
 		
 	} // class buttonListener
+
+	class providerBtnListener implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			// Launching new Activity on selecting single List Item
+			Intent i = new Intent(getApplicationContext(), AndroidProviderList.class);
+			// sending data to new activity
+			startActivity(i);
+		} // method onClick
+	} // class pipelineBtnListener
 
 	/**
 	 * function to load map. If map is not created it will create it for you

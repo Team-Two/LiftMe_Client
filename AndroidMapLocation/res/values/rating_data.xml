@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ratings">
+        <item>Jim : 4 - Well worth the effort</item>
+        <item>Jill : 3 - Could be better</item>
+        <item>Janet : 2 - Better late than never</item>
+    </string-array>
+</resources>
