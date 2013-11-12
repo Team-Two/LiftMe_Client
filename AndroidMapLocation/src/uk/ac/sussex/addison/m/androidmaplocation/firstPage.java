@@ -63,6 +63,7 @@ public class firstPage extends Activity {
         		    
         		}else{
         			/*Go to main_activity*/
+        			/*Connection between the activities is missing */
         		}
         		
         	}
