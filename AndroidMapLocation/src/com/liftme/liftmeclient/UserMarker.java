@@ -3,7 +3,7 @@
 //					Changed variable name deviceID to deviceID to be more reflective of actual meaning
 //221013 - MtpA - Create class with details of the current position of the app
 
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

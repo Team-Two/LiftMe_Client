@@ -1,4 +1,4 @@
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

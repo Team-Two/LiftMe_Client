@@ -16,11 +16,10 @@
 //					Remove method writeToSDCard and replace with instance of SDCard with the method
 //					Remove redundant askToContinue method (was just in to see how can work)
 
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import java.util.Calendar;
 
-import uk.ac.sussex.addison.m.androidmaplocation.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

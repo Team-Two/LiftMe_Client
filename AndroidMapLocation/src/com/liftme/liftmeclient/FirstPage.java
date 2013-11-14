@@ -1,4 +1,4 @@
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class firstPage extends Activity {
+public class FirstPage extends Activity {
     private boolean success;
     private static MessageDigest md;
 

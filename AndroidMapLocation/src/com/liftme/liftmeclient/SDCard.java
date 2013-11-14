@@ -1,9 +1,10 @@
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
 
 import android.content.res.Resources;
 import android.os.Environment;

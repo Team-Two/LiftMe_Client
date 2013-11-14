@@ -1,7 +1,7 @@
 //111113 - MtpA -	Class created.  List of providers taken from provider_data.xml in values folder
 //					Initial proof of concept
 
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import android.app.ListActivity;
 import android.content.Intent;

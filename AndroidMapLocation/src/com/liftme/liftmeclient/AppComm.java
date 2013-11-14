@@ -1,6 +1,6 @@
 //101113 - MtpA -	Class added from Mike's original in LiftMe_Server
 
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import java.io.BufferedReader;
 import java.io.IOException;

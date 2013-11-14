@@ -1,7 +1,7 @@
 //111113 - MtpA -	Class created.  Takes a data from rating_data.xml
 //					Initial proof of concept
 
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import android.app.ListActivity;
 import android.os.Bundle;

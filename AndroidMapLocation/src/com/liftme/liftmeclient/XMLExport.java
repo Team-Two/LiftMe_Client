@@ -3,7 +3,7 @@
 //081113 - MtpA -	Refactor getMarkerID to getDeviceID
 //311013 - MtpA -	Changed ID data export from Integer to String to reflect XML changes
 
-package uk.ac.sussex.addison.m.androidmaplocation;
+package com.liftme.liftmeclient;
 
 import java.io.StringWriter;
 
