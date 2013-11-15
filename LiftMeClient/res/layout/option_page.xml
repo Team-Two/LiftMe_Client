@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="20dp"
+        android:paddingBottom="40dip"
+        android:src="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/lifterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="15dip"
+        android:paddingBottom="15dip"
+        android:src="@drawable/lifter_button" />
+    
+    <ImageView
+        android:id="@+id/lifteeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="15dip"
+        android:paddingBottom="15dip"
+        android:src="@drawable/liftee_button" />
+    
+</LinearLayout>
