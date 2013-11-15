@@ -51,6 +51,10 @@ public class FirstPage extends Activity {
                     sb.append(Integer.toHexString(0xff & digested[i]));
                 }
                 
+                pass=sb.toString();
+                
+                LoginObjects log= new LoginObjects(ema,uname,pass);
+
                 /*sb is the encrypted version of the password*/
         		
         		/* Connecting to server and checking the information*/
