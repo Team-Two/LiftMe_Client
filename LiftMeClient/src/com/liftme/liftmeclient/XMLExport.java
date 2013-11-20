@@ -1,3 +1,4 @@
+//201113 - MtpA -	Add method writeUserXML (User.XSD) - overloaded String and Calendar methods
 //101113 - MtpA -	Add method writeJourneyXML (Journey.XSD)
 //					Refactor writeMarkerXML to deal with change in Location.XSD (project ext 2)
 //081113 - MtpA -	Refactor getMarkerID to getDeviceID
@@ -6,8 +7,12 @@
 package com.liftme.liftmeclient;
 
 import java.io.StringWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.xmlpull.v1.XmlSerializer;
+
 import android.util.Xml;
 
 public class XMLExport {
@@ -84,4 +89,77 @@ public class XMLExport {
 		} 
 	} // method writeJourneyXml
 	
+	public String writeUserXml(LoginObjects vLoginObjects, String vDeviceID, String vDate, String vTime) {
+		XmlSerializer serializer = Xml.newSerializer();
+		StringWriter writer = new StringWriter();
+		try {
+			serializer.setOutput(writer);
+			serializer.startDocument("UTF-8", true);
+			serializer.startTag("", "RegisterUser");
+			serializer.startTag("", "User");
+			serializer.startTag("", "Name");
+			serializer.text(vLoginObjects.getUsername());
+			serializer.endTag("", "Name");
+			serializer.startTag("", "Email");
+			serializer.text(vLoginObjects.getEmail());
+			serializer.endTag("", "Email");
+			serializer.startTag("", "DeviceID");
+			serializer.text(vDeviceID);
+			serializer.endTag("", "DeviceID");
+			serializer.startTag("", "Password");
+			serializer.text(vLoginObjects.getPassword());
+			serializer.endTag("", "Password");
+			serializer.startTag("", "Date");
+			serializer.text(vDate);
+			serializer.endTag("", "Date");
+			serializer.startTag("", "Time");
+			serializer.text(vTime);
+			serializer.endTag("", "Time");
+			serializer.endTag("", "User");
+			serializer.endTag("", "RegisterUser");
+			serializer.endDocument();
+			return writer.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} 
+	} // method writeUserXml
+	
+	public String writeUserXml(LoginObjects vLoginObjects, String vDeviceID, Calendar vCalDate) {
+		XmlSerializer serializer = Xml.newSerializer();
+		StringWriter writer = new StringWriter();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String vDate = dateFormat.format(vCalDate.getTime()).substring(0, 10);
+		String vTime = dateFormat.format(vCalDate.getTime()).substring(11);
+		try {
+			serializer.setOutput(writer);
+			serializer.startDocument("UTF-8", true);
+			serializer.startTag("", "RegisterUser");
+			serializer.startTag("", "User");
+			serializer.startTag("", "Name");
+			serializer.text(vLoginObjects.getUsername());
+			serializer.endTag("", "Name");
+			serializer.startTag("", "Email");
+			serializer.text(vLoginObjects.getEmail());
+			serializer.endTag("", "Email");
+			serializer.startTag("", "DeviceID");
+			serializer.text(vDeviceID);
+			serializer.endTag("", "DeviceID");
+			serializer.startTag("", "Password");
+			serializer.text(vLoginObjects.getPassword());
+			serializer.endTag("", "Password");
+			serializer.startTag("", "Date");
+			serializer.text(vDate);
+			serializer.endTag("", "Date");
+			serializer.startTag("", "Time");
+			serializer.text(vTime);
+			serializer.endTag("", "Time");
+			serializer.endTag("", "User");
+			serializer.endTag("", "RegisterUser");
+			serializer.endDocument();
+			return writer.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} 
+	} // method writeUserXml (overloaded - calendar argument)
+
 } // class XMLExport

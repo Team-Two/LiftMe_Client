@@ -1,3 +1,9 @@
+//201113 - MtpA -	**********TEMP CHANGE***********
+//					Amended the provider button to read in confirmregister data
+//					registerXMLDir and registerXMLFilename to the Values>Strings.xml
+//					**********TEMP CHANGE***********
+
+//191113 - MtpA -	Added try/catch around UserMarker builder in line with JUnit test updates
 //111113 - MtpA -	Two ImageButtons added with corresponding icons.  Both buttons have a listener.
 //					providerBtnListener added (see above) and that creates new activity for listing providers
 
@@ -19,6 +25,10 @@
 package com.liftme.liftmeclient;
 
 import java.util.Calendar;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import android.app.Activity;
 import android.content.Context;
@@ -123,12 +133,27 @@ public class MainActivity extends Activity implements LocationListener {
 	class providerBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
+// mtpa temp
 			// Launching new Activity on selecting single List Item
-			Intent i = new Intent(getApplicationContext(), AndroidProviderList.class);
+//			Intent i = new Intent(getApplicationContext(), AndroidProviderList.class);
 			// sending data to new activity
-			startActivity(i);
+//			startActivity(i);
+			
+			resourceVals = getResources();
+			XMLImport importFile = new XMLImport();
+			ConfirmRegister regData;
+			try {
+				String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.registerXmlDir), resourceVals.getString(R.string.registerXmlFileName));				
+		        XMLImport parserXML = new XMLImport();
+		        regData = parserXML.importConfirmRegister(xmlData);
+		        Toast.makeText(getBaseContext(),"Registered > " + regData.getDeviceID() + "<>" + regData.getSessionID(), Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+		        Toast.makeText(getBaseContext(),"All fell apart reading in destinations", Toast.LENGTH_LONG).show();
+			}
+
+// mtpa temp
 		} // method onClick
-	} // class pipelineBtnListener
+	} // class providerBtnListener
 
 	/**
 	 * function to load map. If map is not created it will create it for you
