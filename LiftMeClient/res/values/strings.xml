@@ -7,6 +7,8 @@
     <string name="tempBtn">Save Location</string>
     <string name="xmlDir">/location_xml</string>
     <string name="xmlLocFileName">Location_</string>
+    <string name="registerXmlDir">/destination_xml/</string>
+    <string name="registerXmlFileName">confirmregister.xml</string>    
     <string name="caricon">Car icon</string>
     <string name="diskicon">Disk icon</string>
     
