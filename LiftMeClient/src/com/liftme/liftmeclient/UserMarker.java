@@ -40,9 +40,27 @@ public class UserMarker {
 			this.markerTime = dateFormat.format(markerCal.getTime()).substring(11);		
 		} // Builder constructor - no args
 
-		public UserMarker build() {
-			return new UserMarker(this);
+		public UserMarker build() throws DataValidationException {
+			if (checkValidFields()) {
+				return new UserMarker(this);
+			} else {
+				throw new DataValidationException();
+			}
 		} // method build
+		
+		private boolean checkValidFields() {
+			if (!LiftMeDataValidator.isDeviceIDValid(this.deviceID)) {
+				return false;
+			} 
+			if (!LiftMeDataValidator.isLatValid(this.markerLat)) {
+				return false;
+			} 
+			if (!LiftMeDataValidator.isLongValid(this.markerLong)) {
+				return false;
+			}
+			return LiftMeDataValidator.isDateValid(this.markerDate, this.markerTime);
+		} // method checkValidFields
+		
 	} // class Builder
 
 	private UserMarker(Builder builder) {

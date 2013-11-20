@@ -198,11 +198,11 @@ public class FirstPage extends Activity implements View.OnClickListener,
         }
 
         protected void onPostExecute(Double result){
-            pb.setVisibility(View.GONE);
+            //pb.setVisibility(View.GONE);
             Toast.makeText(getApplicationContext(), "Code Sent", Toast.LENGTH_LONG).show();
         }
         protected void onProgressUpdate(Integer... progress){
-            pb.setProgress(progress[0]);
+            //pb.setProgress(progress[0]);
         }
 
         public void postData(String valueIWantToSend) {

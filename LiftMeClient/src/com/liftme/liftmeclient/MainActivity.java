@@ -202,7 +202,12 @@ public class MainActivity extends Activity implements LocationListener {
 		String deviceId = Settings.Secure.getString(getContentResolver(),Settings.Secure.ANDROID_ID);
 
 		// invoke instance of the current marker
-		currMarker = new UserMarker.Builder(deviceId, lat, lng, currDate).build();
+		try {
+			currMarker = new UserMarker.Builder(deviceId, lat, lng, currDate).build();
+		} catch (DataValidationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         Toast.makeText(getBaseContext(),"Current location : " + Double.toString(lat).substring(0, 5) + "," + Double.toString(lng).substring(0, 5), Toast.LENGTH_LONG).show();
 	} // onLocationChanged
   
