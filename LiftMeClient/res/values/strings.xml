@@ -3,7 +3,7 @@
 
     <string name="app_name">Lift Me</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Hello world!!</string>
     <string name="tempBtn">Save Location</string>
     <string name="xmlDir">/location_xml</string>
     <string name="xmlLocFileName">Location_</string>
