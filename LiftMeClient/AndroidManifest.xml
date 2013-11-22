@@ -64,10 +64,12 @@
 
         <!-- Google API Key AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik  Mark's key -->
         <!-- Google API Key AIzaSyBWuLJIZE1Vo9zX-OHO5MR8rj_T1o16Qt8 Eyvgeny's key -->
+        <!-- Google API Key AIzaSyDAYwavkjBvNQPVzyKOmMVI2rjytysKj7M Emre got bored too-->
         <!-- Google API Key AIzaSyDkigAc5cG9EmRMIlx9Pq1bPiqpb-JGTR4 Mikey got bored too-->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDkigAc5cG9EmRMIlx9Pq1bPiqpb-JGTR4" />    
+            android:value="AIzaSyDAYwavkjBvNQPVzyKOmMVI2rjytysKj7M" 
+           />    
     </application>
  
 </manifest>
