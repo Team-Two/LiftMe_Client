@@ -68,8 +68,12 @@ public class MainActivity extends Activity implements LocationListener {
 	private GoogleMap googleMap;
 	private Location location;
 	private LocationManager locationManager;
-	private ImageButton locationButton;
-	private ImageButton providerButton;
+	private ImageButton profileButton;
+	private ImageButton ratingsButton;
+	private ImageButton tripsButton;
+	private ImageButton saveButton;
+	private ImageButton refreshButton;
+	private ImageButton goButton;
 	private MarkerOptions myMarker;
 	private String provider;
 	private UserMarker currMarker;
@@ -96,10 +100,10 @@ public class MainActivity extends Activity implements LocationListener {
 		startActivity(i);
 
 		// show buttons
-		locationButton = (ImageButton) findViewById(R.id.locationBtn);
-		locationButton.setOnClickListener(new saveBtnListener());
-		providerButton = (ImageButton) findViewById(R.id.providerBtn);
-		providerButton.setOnClickListener(new providerBtnListener());
+		saveButton = (ImageButton) findViewById(R.id.saveBtn);
+		saveButton.setOnClickListener(new saveBtnListener());
+		/*providerButton = (ImageButton) findViewById(R.id.providerBtn);
+		providerButton.setOnClickListener(new providerBtnListener());*/
 
 		if (initilizeMap()) {
 			onLocationChanged(location);			
