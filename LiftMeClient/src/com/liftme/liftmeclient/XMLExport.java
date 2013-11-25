@@ -1,3 +1,4 @@
+//251113 - MtpA -	Refactored code to rename all methods from write to create (more meaningful)
 //201113 - MtpA -	Add method writeUserXML (User.XSD) - overloaded String and Calendar methods
 //101113 - MtpA -	Add method writeJourneyXML (Journey.XSD)
 //					Refactor writeMarkerXML to deal with change in Location.XSD (project ext 2)
@@ -17,7 +18,7 @@ import android.util.Xml;
 
 public class XMLExport {
 
-	public String writeMarkerXml(UserMarker vCurrMarker){
+	public String createMarkerXml(UserMarker vCurrMarker){
 		XmlSerializer serializer = Xml.newSerializer();
 		StringWriter writer = new StringWriter();
 		try {
@@ -47,7 +48,7 @@ public class XMLExport {
 		} 
 	} // method writeMarkerXml
 	
-	public String writeJourneyXml(Journey vJourney){
+	public String createJourneyXml(Journey vJourney){
 		XmlSerializer serializer = Xml.newSerializer();
 		StringWriter writer = new StringWriter();
 		try {
@@ -89,7 +90,7 @@ public class XMLExport {
 		} 
 	} // method writeJourneyXml
 	
-	public String writeUserXml(LoginObjects vLoginObjects, String vDeviceID, String vDate, String vTime) {
+	public String createUserXml(LoginObjects vLoginObjects, String vDeviceID, String vDate, String vTime) {
 		XmlSerializer serializer = Xml.newSerializer();
 		StringWriter writer = new StringWriter();
 		try {
@@ -124,7 +125,7 @@ public class XMLExport {
 		} 
 	} // method writeUserXml
 	
-	public String writeUserXml(LoginObjects vLoginObjects, String vDeviceID, Calendar vCalDate) {
+	public String createUserXml(LoginObjects vLoginObjects, String vDeviceID, Calendar vCalDate) {
 		XmlSerializer serializer = Xml.newSerializer();
 		StringWriter writer = new StringWriter();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

@@ -1,3 +1,4 @@
+//251113 - MtpA -	Refactored code writeUserXML to createUserXML
 //201113 - MtpA -	**********TEMP CHANGE***********
 //					Amended the provider button to read in confirmregister data
 //					registerXMLDir and registerXMLFilename to the Values>Strings.xml
@@ -118,7 +119,7 @@ public class MainActivity extends Activity implements LocationListener {
 				
 				// attempt create on XML output
 				SDCard deviceSDCard = new SDCard();
-				if (deviceSDCard.writeToSD(xmlData.writeMarkerXml(currMarker), fileName, resourceVals)) {
+				if (deviceSDCard.writeToSD(xmlData.createMarkerXml(currMarker), fileName, resourceVals)) {
 			        Toast.makeText(getBaseContext(),"Location saved: " + fileName, Toast.LENGTH_LONG).show();
 				} else {
 			        Toast.makeText(getBaseContext(),"Error in writing to SD card", Toast.LENGTH_LONG).show();
