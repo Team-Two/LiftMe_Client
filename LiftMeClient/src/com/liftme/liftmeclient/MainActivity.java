@@ -102,6 +102,8 @@ public class MainActivity extends Activity implements LocationListener {
 		// show buttons
 		saveButton = (ImageButton) findViewById(R.id.saveBtn);
 		saveButton.setOnClickListener(new saveBtnListener());
+		refreshButton = (ImageButton) findViewById(R.id.refreshBtn);
+		saveButton.setOnClickListener(new refreshBtnListener());
 		/*providerButton = (ImageButton) findViewById(R.id.providerBtn);
 		providerButton.setOnClickListener(new providerBtnListener());*/
 
@@ -139,7 +141,15 @@ public class MainActivity extends Activity implements LocationListener {
 
 	} // class buttonListener
 
-	class providerBtnListener implements View.OnClickListener {
+	class refreshBtnListener implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			
+			onResume();
+		}
+	}
+
+	/*class providerBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
 			// mtpa temp
