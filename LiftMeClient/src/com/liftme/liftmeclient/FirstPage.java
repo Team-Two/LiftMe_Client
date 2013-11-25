@@ -1,9 +1,10 @@
 package com.liftme.liftmeclient;
 
 import java.io.IOException;
+import java.net.URL;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -15,31 +16,23 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.google.android.gms.common.Scopes;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
-//import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
-
-import com.google.android.gms.common.*;
-import com.google.android.gms.common.GooglePlayServicesClient.*;
+import com.google.android.gms.common.Scopes;
 import com.google.android.gms.plus.PlusClient;
+//import android.media.Image;
 
 public class FirstPage extends Activity implements View.OnClickListener,
 		ConnectionCallbacks, OnConnectionFailedListener {
@@ -73,7 +66,12 @@ public class FirstPage extends Activity implements View.OnClickListener,
 		mConnectionProgressDialog.setMessage("Signing in...");
 
 		findViewById(R.id.sign_in_button).setOnClickListener(this);
+//mtpa temp
+		 ImageButton img = (ImageButton) findViewById(R.id.imageButton);
+		 img.setOnClickListener(new btnConfirmListener());
+		 
 
+//mtpa temp
 		/*
 		 * success = false;
 		 * final TextView myText = null;
@@ -113,6 +111,14 @@ public class FirstPage extends Activity implements View.OnClickListener,
 		 * } }); *
 		 */
 	}
+	 class btnConfirmListener implements View.OnClickListener {
+			@Override
+			public void onClick(View v) {
+				MyAsyncTask mat = new MyAsyncTask();
+				mat.execute("hello");
+			} // method onClick
+			
+		} // class buttonListener
 
 	@Override
 	protected void onStart() {
@@ -193,7 +199,7 @@ public class FirstPage extends Activity implements View.OnClickListener,
         @Override
         protected Double doInBackground(String... params) {
             // TODO Auto-generated method stub
-            postData(params[0]);
+            postData("hello");
             return null;
         }
 
@@ -209,18 +215,34 @@ public class FirstPage extends Activity implements View.OnClickListener,
             // Create a new HttpClient and Post Header
             HttpClient httpclient = new DefaultHttpClient();
             //HttpPost httppost = new HttpPost("http://10.0.2.2/chotu/index.php");
-            HttpPost httppost = new HttpPost("http://192.168.1.13/educlinic/Widget/AndroidApp");
+            HttpPost httppost = new HttpPost("http://10.0.69.157:8080/com.liftme/registerauser.html");
             try {
 
                 // Add your data
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                nameValuePairs.add(new BasicNameValuePair("myHttpData", valueIWantToSend));
+ //mtpa temp - establish connection with temp data
+                nameValuePairs.add(new BasicNameValuePair("name", valueIWantToSend));
+                nameValuePairs.add(new BasicNameValuePair("email", valueIWantToSend));
+                nameValuePairs.add(new BasicNameValuePair("password", valueIWantToSend));
+ //mtpa temp - establish connection with temp data
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
                 // Execute HTTP Post Request
+//mtpa temp
+//                Thread.currentThread().setContextClassLoader(new ClassLoader() {
+//                    @Override
+//                    public Enumeration<URL> getResources(String resName) throws IOException {
+//                        Log.i("Debug", "Stack trace of who uses " +
+//                                "Thread.currentThread().getContextClassLoader()." +
+//                                "getResources(String resName):", new Exception());
+//                        return super.getResources(resName);
+//                    }
+//                });
+//mtpa temp
+                Log.i("asdf","before");
                 HttpResponse response = httpclient.execute(httppost);
-
-            } 
+                Log.i("asdf",response.toString());
+            }
             catch (ClientProtocolException e) 
             {
                 // TODO Auto-generated catch block
