@@ -1,3 +1,4 @@
+//241113 - MtpA -	Amended with IP to Mike's laptop and swapping of activity to lifter/liftee option
 package com.liftme.liftmeclient;
 
 import java.io.IOException;
@@ -114,8 +115,11 @@ public class FirstPage extends Activity implements View.OnClickListener,
 	 class btnConfirmListener implements View.OnClickListener {
 			@Override
 			public void onClick(View v) {
-				MyAsyncTask mat = new MyAsyncTask();
-				mat.execute("hello");
+//				MyAsyncTask mat = new MyAsyncTask();
+//				mat.execute("hello");
+				Intent intent = new Intent(FirstPage.this, UserOption.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
 			} // method onClick
 			
 		} // class buttonListener

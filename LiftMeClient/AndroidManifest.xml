@@ -62,6 +62,21 @@
             android:label="Provider Ratings Selected" >
         </activity>  
 
+        <activity
+            android:name="com.liftme.liftmeclient.UserOption"
+            android:label="Liftee/Lifter Options Page Selected" >
+        </activity>  
+        
+        <activity
+            android:name="com.liftme.liftmeclient.Lifter"
+            android:label="Lifter Options Page Selected" >
+        </activity>  
+        
+        <activity
+            android:name="com.liftme.liftmeclient.MainActivity"
+            android:label="Liftee Options Page Selected" >
+        </activity>  
+        
         <!-- Google API Key AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik  Mark's key -->
         <!-- Google API Key AIzaSyBWuLJIZE1Vo9zX-OHO5MR8rj_T1o16Qt8 Eyvgeny's key -->
         <!-- Google API Key AIzaSyDkigAc5cG9EmRMIlx9Pq1bPiqpb-JGTR4 Mikey got bored too-->
