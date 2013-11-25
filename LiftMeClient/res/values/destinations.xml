@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="destinations">
+        <item>University:50.867:-0.086</item>
+        <item>Falmer Station:50.864:-0.087</item>
+        <item>Brighton Station:50.829:-0.141</item>
+        <item>Hove Station:50.835:-0.170</item>
+        <item>Brighton Pier:50.835:-0.136</item>
+    </string-array>
+</resources>
