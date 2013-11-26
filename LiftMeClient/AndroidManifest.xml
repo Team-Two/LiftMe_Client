@@ -51,12 +51,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity
-            android:name="com.liftme.liftmeclient.AndroidProviderList"
-            android:label="Provider List" >
-        </activity>
-        
+                
         <activity
             android:name="com.liftme.liftmeclient.ProviderRatings"
             android:label="Provider Ratings Selected" >
@@ -75,6 +70,16 @@
         <activity
             android:name="com.liftme.liftmeclient.MainActivity"
             android:label="Liftee Options Page Selected" >
+        </activity>  
+        
+        <activity
+            android:name="com.liftme.liftmeclient.Profile"
+            android:label="Profile Page Selected" >
+        </activity>  
+        
+        <activity
+            android:name="com.liftme.liftmeclient.DestinationList"
+            android:label="Destination Page Selected" >
         </activity>  
         
         <!-- Google API Key AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik  Mark's key -->
