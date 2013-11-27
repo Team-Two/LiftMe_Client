@@ -17,17 +17,6 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-    <style name="Theme.SelectDate" parent="@android:style/Theme.Holo.NoActionBar">
-
-        <item name="android:editTextStyle">@style/Widget.EditText.Black</item>
-
-    </style>
-
-    <style name="Widget.EditText.Black" parent="@android:style/Widget.EditText">
-
-        <item name="android:textColor">@color/black</item>
-
-    </style>
 
 </resources>
 
