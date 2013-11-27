@@ -76,7 +76,7 @@ public class MainActivity extends Activity implements LocationListener {
 	private ImageButton tripsButton;
 	private ImageButton saveButton;
 	private ImageButton refreshButton;
-	private ImageButton goButton;
+	private Button destinationButton;
 	private MarkerOptions myMarker;
 	private String provider;
 	private UserMarker currMarker;
@@ -113,8 +113,8 @@ public class MainActivity extends Activity implements LocationListener {
 		tripsButton.setOnClickListener(new tripsBtnListener());
 		ratingsButton = (ImageButton) findViewById(R.id.ratingsBtn);
 		ratingsButton.setOnClickListener(new ratingsBtnListener());
-		goButton = (ImageButton) findViewById(R.id.goBtn);
-		goButton.setOnClickListener(new goBtnListener());
+		destinationButton = (Button) findViewById(R.id.destinationsButton);
+		destinationButton.setOnClickListener(new destBtnListener());
 
 		if (initilizeMap()) {
 			onLocationChanged(location);			
@@ -177,11 +177,14 @@ public class MainActivity extends Activity implements LocationListener {
 	class tripsBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
-			Toast.makeText(getBaseContext(),"Trips", Toast.LENGTH_LONG).show();
+			Intent profileIntent = new Intent(getApplicationContext(), PreviousTrips.class);
+			String str="Liftee";
+			profileIntent.putExtra("Activity", str);
+			startActivity(profileIntent);
 		}
 	}
 	
-	class goBtnListener implements View.OnClickListener {
+	class destBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
 			Intent goIntent = new Intent(getApplicationContext(), DestinationList.class);

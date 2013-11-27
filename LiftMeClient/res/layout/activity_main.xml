@@ -18,30 +18,15 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/destination"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Destination:"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal|numberSigned" >
-        </EditText>
-
-        <ImageButton
-            android:id="@+id/goBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/caricon"
-            android:src="@drawable/go" />
+       <Button
+        android:id="@+id/destinationsButton"
+        android:layout_gravity="center"
+        style="@style/ButtonTextSmaller"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="Select Destination"
+        android:background="@drawable/blue_button"/>
+       
     </LinearLayout>
 
     <LinearLayout

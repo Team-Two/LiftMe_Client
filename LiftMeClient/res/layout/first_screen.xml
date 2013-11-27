@@ -91,7 +91,6 @@
     
      <Button
         android:id="@+id/signInButton"
-        android:contentDescription="@string/caricon"
         android:layout_gravity="center"
         style="@style/ButtonText"
         android:layout_width="180dp"
