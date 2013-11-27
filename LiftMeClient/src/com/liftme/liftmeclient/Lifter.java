@@ -1,3 +1,4 @@
+//271113 - MtpA -	Added pass parameter to destination list
 //241113 - MtpA -	Created class
 package com.liftme.liftmeclient;
 
@@ -34,6 +35,8 @@ public class Lifter extends Activity {
 		public void onClick(View v) {
 			Intent goIntent = new Intent(getApplicationContext(), DestinationList.class);
 			goIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			String str="Lifter";
+			goIntent.putExtra("Activity", str);
 			startActivity(goIntent);
 		}
 	}
