@@ -52,19 +52,16 @@ public class DestinationList extends ListActivity {
 	public class destinationListItemListener implements OnItemClickListener {
 		public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
 			Intent currIntent = getIntent();
-			Bundle currBundle = currIntent.getExtras();
-			if (currBundle!=null) {
-				callingActivity = (String) currBundle.get("Activity");
-				Toast.makeText(getBaseContext(),">>>>" + callingActivity, Toast.LENGTH_LONG).show();			
-			} else {
-				callingActivity = "Liftee";
-				Toast.makeText(getBaseContext(),"Nothing !", Toast.LENGTH_LONG).show();			
-			}
+			callingActivity = currIntent.getStringExtra("Activity");
 			// selected item
 			String destination = ((TextView) view).getText().toString();
-
+			Intent mainIntent;
 			// Launching new Activity on selecting single List Item
-			Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+			if (callingActivity == "Liftee" || callingActivity == null) {
+				mainIntent = new Intent(getApplicationContext(), MainActivity.class);				
+			} else {
+				mainIntent = new Intent(getApplicationContext(), Lifter.class);
+			}
 			// sending data to new activity
 			mainIntent.putExtra("destination", destination);
 			mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

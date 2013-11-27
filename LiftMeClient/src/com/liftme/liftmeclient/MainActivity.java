@@ -178,8 +178,6 @@ public class MainActivity extends Activity implements LocationListener {
 		@Override
 		public void onClick(View v) {
 			Intent profileIntent = new Intent(getApplicationContext(), PreviousTrips.class);
-			String str="Liftee";
-			profileIntent.putExtra("Activity", str);
 			startActivity(profileIntent);
 		}
 	}
@@ -189,6 +187,8 @@ public class MainActivity extends Activity implements LocationListener {
 		public void onClick(View v) {
 			Intent goIntent = new Intent(getApplicationContext(), DestinationList.class);
 			goIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			String str="Liftee";
+			goIntent.putExtra("Activity", str);
 			startActivity(goIntent);
 		}
 	}
