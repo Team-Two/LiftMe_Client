@@ -13,6 +13,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
  
 public class DestinationList extends ListActivity {
 	
@@ -50,6 +51,15 @@ public class DestinationList extends ListActivity {
 	
 	public class destinationListItemListener implements OnItemClickListener {
 		public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+			Intent currIntent = getIntent();
+			Bundle currBundle = currIntent.getExtras();
+			if (currBundle!=null) {
+				callingActivity = (String) currBundle.get("Activity");
+				Toast.makeText(getBaseContext(),">>>>" + callingActivity, Toast.LENGTH_LONG).show();			
+			} else {
+				callingActivity = "Liftee";
+				Toast.makeText(getBaseContext(),"Nothing !", Toast.LENGTH_LONG).show();			
+			}
 			// selected item
 			String destination = ((TextView) view).getText().toString();
 
