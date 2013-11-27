@@ -1,3 +1,4 @@
+//261113 - MtpA -	Added listeners for all buttons and linked through to Profile
 //251113 - MtpA -	Refactored code writeUserXML to createUserXML
 //201113 - MtpA -	**********TEMP CHANGE***********
 //					Amended the provider button to read in confirmregister data
@@ -96,17 +97,23 @@ public class MainActivity extends Activity implements LocationListener {
 		setContentView(R.layout.activity_main);
 
 		//Launching new Activity on selecting single List Item
-		Intent i = new Intent(getApplicationContext(), FirstPage.class);
+//		Intent i = new Intent(getApplicationContext(), FirstPage.class);
 		//sending data to new activity
-		startActivity(i);
+//		startActivity(i);
 
 		// show buttons
 		saveButton = (ImageButton) findViewById(R.id.saveBtn);
 		saveButton.setOnClickListener(new saveBtnListener());
 		refreshButton = (ImageButton) findViewById(R.id.refreshBtn);
-		saveButton.setOnClickListener(new refreshBtnListener());
-		/*providerButton = (ImageButton) findViewById(R.id.providerBtn);
-		providerButton.setOnClickListener(new providerBtnListener());*/
+		refreshButton.setOnClickListener(new refreshBtnListener());
+		profileButton = (ImageButton) findViewById(R.id.profileBtn);
+		profileButton.setOnClickListener(new profileBtnListener());
+		tripsButton = (ImageButton) findViewById(R.id.mytripsBtn);
+		tripsButton.setOnClickListener(new tripsBtnListener());
+		ratingsButton = (ImageButton) findViewById(R.id.ratingsBtn);
+		ratingsButton.setOnClickListener(new refreshBtnListener());
+		goButton = (ImageButton) findViewById(R.id.goBtn);
+		goButton.setOnClickListener(new goBtnListener());
 
 		if (initilizeMap()) {
 			onLocationChanged(location);			
@@ -145,11 +152,42 @@ public class MainActivity extends Activity implements LocationListener {
 	class refreshBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
-			
+			Toast.makeText(getBaseContext(),"Refresh", Toast.LENGTH_LONG).show();			
 			onResume();
 		}
 	}
 
+	class profileBtnListener implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			Intent profileIntent = new Intent(getApplicationContext(), Profile.class);
+			startActivity(profileIntent);
+		}
+	}
+	
+	class ratingsBtnListener implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			Toast.makeText(getBaseContext(),"Ratings", Toast.LENGTH_LONG).show();
+		}
+	}
+
+	class tripsBtnListener implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			Toast.makeText(getBaseContext(),"Trips", Toast.LENGTH_LONG).show();
+		}
+	}
+	
+	class goBtnListener implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			Intent goIntent = new Intent(getApplicationContext(), DestinationList.class);
+			goIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(goIntent);
+		}
+	}
+	
 	/*class providerBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
