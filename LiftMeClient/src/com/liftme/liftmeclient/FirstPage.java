@@ -1,3 +1,4 @@
+//261113 - MtpA -	Changed signin button from ImageButton to Button
 //241113 - MtpA -	Amended with IP to Mike's laptop and swapping of activity to lifter/liftee option
 //					Added temp code to create the user login XML data (mtpa temp)
 
@@ -29,6 +30,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -73,10 +75,8 @@ ConnectionCallbacks, OnConnectionFailedListener {
 
 		findViewById(R.id.sign_in_button).setOnClickListener(this);
 		//mtpa temp
-		ImageButton img = (ImageButton) findViewById(R.id.imageButton);
+		Button img = (Button) findViewById(R.id.signInButton);
 		img.setOnClickListener(new btnConfirmListener());
-
-
 		//mtpa temp
 		/*
 		 * success = false;

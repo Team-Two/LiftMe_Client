@@ -1,3 +1,4 @@
+//271113 - MtpA -	Added code for ratings button
 //261113 - MtpA -	Added listeners for all buttons and linked through to Profile
 //251113 - MtpA -	Refactored code writeUserXML to createUserXML
 //201113 - MtpA -	**********TEMP CHANGE***********
@@ -111,7 +112,7 @@ public class MainActivity extends Activity implements LocationListener {
 		tripsButton = (ImageButton) findViewById(R.id.mytripsBtn);
 		tripsButton.setOnClickListener(new tripsBtnListener());
 		ratingsButton = (ImageButton) findViewById(R.id.ratingsBtn);
-		ratingsButton.setOnClickListener(new refreshBtnListener());
+		ratingsButton.setOnClickListener(new ratingsBtnListener());
 		goButton = (ImageButton) findViewById(R.id.goBtn);
 		goButton.setOnClickListener(new goBtnListener());
 
@@ -168,7 +169,8 @@ public class MainActivity extends Activity implements LocationListener {
 	class ratingsBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
-			Toast.makeText(getBaseContext(),"Ratings", Toast.LENGTH_LONG).show();
+			Intent profileIntent = new Intent(getApplicationContext(), Rating.class);
+			startActivity(profileIntent);
 		}
 	}
 
