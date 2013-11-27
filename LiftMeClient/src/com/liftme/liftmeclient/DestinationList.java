@@ -15,6 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
  
 public class DestinationList extends ListActivity {
+	
+	private String callingActivity;
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
