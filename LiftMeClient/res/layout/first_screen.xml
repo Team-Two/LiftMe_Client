@@ -90,16 +90,17 @@
 
     </LinearLayout>
     
-     <ImageButton
-        android:id="@+id/imageButton"
+     <Button
+        android:id="@+id/signInButton"
         android:contentDescription="@string/caricon"
         android:layout_gravity="center"
         style="@style/ButtonText"
         android:layout_width="180dp"
         android:layout_height="50dp"
-        android:background="@drawable/green_button"
-        android:text="Sign In" >
-    </ImageButton>
+        android:text="Sign In"
+        android:background="@drawable/green_button">
+       
+    </Button>
 
      <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

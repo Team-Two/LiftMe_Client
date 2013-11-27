@@ -32,6 +32,8 @@
         <EditText
             android:id="@+id/editText10"
             android:layout_width="172dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:layout_height="wrap_content"
             android:ems="10" >
         </EditText>
@@ -59,6 +61,8 @@
             android:id="@+id/editText3"
             android:layout_width="188dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:ems="10"/>
 
     </LinearLayout>
@@ -75,11 +79,15 @@
             android:layout_width="128dp"
             android:layout_marginLeft="28dp"
             android:layout_marginRight="5dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:layout_height="match_parent" />
 
         <TimePicker
             android:id="@+id/timePicker1"
             android:layout_width="138dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:layout_height="60dp" />
 
     </LinearLayout>
