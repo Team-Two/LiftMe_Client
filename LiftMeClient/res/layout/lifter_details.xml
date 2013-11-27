@@ -71,15 +71,14 @@
             android:layout_width="128dp"
             android:layout_marginLeft="28dp"
             android:layout_marginRight="5dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+            android:calendarViewShown="false"
+            style="@style/Theme.SelectDate"
             android:layout_height="match_parent" />
 
         <TimePicker
             android:id="@+id/timePicker1"
             android:layout_width="138dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
+           	style="@style/Theme.SelectDate"
             android:layout_height="60dp" />
 
     </LinearLayout>
