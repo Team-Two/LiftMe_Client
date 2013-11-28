@@ -101,7 +101,7 @@ public class Lifter extends Activity {
 	public void setCurrentDateOnView() {
 
 		tvDisplayDate = (TextView) findViewById(R.id.tvDate);
-		//dpResult = (DatePicker) findViewById(R.id.dpResult);
+		dpResult = (DatePicker) findViewById(R.id.dpResult);
 
 		final Calendar c = Calendar.getInstance();
 		year = c.get(Calendar.YEAR);
@@ -122,7 +122,7 @@ public class Lifter extends Activity {
 	public void setCurrentTimeOnView() {
 		 
 		tvDisplayTime = (TextView) findViewById(R.id.tvTime);
-		//timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
+		timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
  
 		final Calendar c = Calendar.getInstance();
 		hour = c.get(Calendar.HOUR_OF_DAY);

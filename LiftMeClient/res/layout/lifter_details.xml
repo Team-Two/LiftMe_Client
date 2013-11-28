@@ -85,10 +85,10 @@
             android:text=""
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <!--<DatePicker
+        <DatePicker
             android:id="@+id/dpResult"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />-->
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -120,10 +120,10 @@
             android:text=""
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <!--<TimePicker
+        <TimePicker
             android:id="@+id/timePicker1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />-->
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <Button
