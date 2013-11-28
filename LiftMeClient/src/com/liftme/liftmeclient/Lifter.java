@@ -1,3 +1,4 @@
+//271113 - MtpA -	Just added a comment
 //271113 - MtpA -        Added pass parameter to destination list
 //241113 - MtpA -        Created class
 package com.liftme.liftmeclient;
@@ -12,6 +13,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -47,6 +49,7 @@ public class Lifter extends Activity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.lifter_details);
                 Toast.makeText(getBaseContext(),"Looking to give someone a lift", Toast.LENGTH_LONG).show();
+
 
                 destinationButton = (Button) findViewById(R.id.destinationsButton);
                 destinationButton.setOnClickListener(new destBtnListener());
