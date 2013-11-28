@@ -68,6 +68,12 @@ public class Lifter extends Activity {
         @Override
         protected void onResume() {
                 super.onResume();
+                
+                Intent currIntent = getIntent();
+    			String selectedDest = currIntent.getStringExtra("destination");
+    			Toast.makeText(getBaseContext(),"Destination Selected"+selectedDest, Toast.LENGTH_LONG).show();
+    			
+    			
         } // method onResume
 
         class destBtnListener implements View.OnClickListener {
