@@ -13,24 +13,7 @@
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:src="@drawable/logo" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/destinationsButton"
-            style="@style/ButtonTextSmaller"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:background="@drawable/blue_button"
-            android:text="Select Destination" />
-    </LinearLayout>
-
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,6 +37,24 @@
             android:ems="10"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/destinationsButton"
+            style="@style/ButtonTextSmaller"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/blue_button"
+            android:text="Select Destination" />
     </LinearLayout>
 
     <LinearLayout
