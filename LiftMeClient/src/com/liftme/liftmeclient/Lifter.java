@@ -48,9 +48,7 @@ public class Lifter extends Activity {
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.lifter_details);
-                Toast.makeText(getBaseContext(),"Looking to give someone a lift", Toast.LENGTH_LONG).show();
-
-
+                
                 destinationButton = (Button) findViewById(R.id.destinationsButton);
                 destinationButton.setOnClickListener(new destBtnListener());
 
@@ -71,7 +69,9 @@ public class Lifter extends Activity {
                 
                 Intent currIntent = getIntent();
     			String selectedDest = currIntent.getStringExtra("destination");
-    			Toast.makeText(getBaseContext(),"Destination Selected"+selectedDest, Toast.LENGTH_LONG).show();
+    			Toast.makeText(getBaseContext(),"Destination Selected "+selectedDest, Toast.LENGTH_LONG).show();
+    			TextView destText = (TextView) findViewById(R.id.destField);
+    			destText.setText(selectedDest);
     			
     			
         } // method onResume
