@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -50,7 +51,6 @@ public class Lifter extends Activity {
 
 		destinationButton = (Button) findViewById(R.id.destinationsButton);
 		destinationButton.setOnClickListener(new destBtnListener());
-
 		btnChangeDate = (Button) findViewById(R.id.btnChangeDate);
 		btnChangeDate.setOnClickListener(new dateBtnListener());
 		
