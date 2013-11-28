@@ -57,10 +57,13 @@ public class DestinationList extends ListActivity {
 			String destination = ((TextView) view).getText().toString();
 			Intent mainIntent;
 			// Launching new Activity on selecting single List Item
-			if (callingActivity == "Liftee" || callingActivity == null) {
+			if (callingActivity == "Liftee") {
 				mainIntent = new Intent(getApplicationContext(), MainActivity.class);				
-			} else {
+			} else if (callingActivity == "Lifter") {
 				mainIntent = new Intent(getApplicationContext(), Lifter.class);
+			} else {
+				mainIntent = new Intent(getApplicationContext(), MainActivity.class);				
+				Toast.makeText(getBaseContext(),"Problem with returning to controlling activity <<" + callingActivity + ">>", Toast.LENGTH_LONG).show();
 			}
 			// sending data to new activity
 			mainIntent.putExtra("destination", destination);
