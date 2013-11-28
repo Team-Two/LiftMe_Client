@@ -1,3 +1,4 @@
+//281113 - MtpA -	Added method importPreviousTrips
 //131113 - MtpA -	Initial class code : Reads in SD card file, creates a DOM, processes elements
 
 package com.liftme.liftmeclient;
@@ -7,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -127,4 +129,37 @@ public class XMLImport {
         }
         return new ConfirmRegister.Builder(vDeviceID, vLoginOK, vSessionID, vDate, vTime).build();
 	} // method ConfirmRegister
+	
+	public ArrayList<Trip> importPreviousTrips(String xmlData) {
+	    final String KEY_TRIP = "Trip"; // parent node
+	    final String KEY_DESTINATION = "Destination";
+	    final String KEY_DATE = "Date";
+	    final String KEY_TIME = "Time";
+	    final String KEY_LIFTER = "Lifter";
+	    
+	    ArrayList<Trip> prevTrips = new ArrayList<Trip>();
+	    String vDestination = "";
+	    String vLifter = "";
+	    String vDate = "";
+	    String vTime = "";
+
+	    Document doc = getDomElement(xmlData); // getting DOM element
+        NodeList nodeList = doc.getElementsByTagName(KEY_TRIP);
+        // looping through all item nodes <item>
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element nodeElement = (Element) nodeList.item(i);
+            // adding each child node to variable list
+	        vDestination = getXMLValue(nodeElement, KEY_DESTINATION);
+	        vDate = getXMLValue(nodeElement, KEY_DATE);
+	        vTime = getXMLValue(nodeElement, KEY_TIME);
+	        vLifter = getXMLValue(nodeElement, KEY_LIFTER);
+	        try {
+		        prevTrips.add(new Trip.Builder(vDestination, vDate, vTime, vLifter).build());				
+			} catch (DataValidationException dataEx) {
+				prevTrips = null;				
+			}
+        }
+        return prevTrips;
+	} // method importPreviousTrips
+	
 } // class XMLImport

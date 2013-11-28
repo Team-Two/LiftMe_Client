@@ -88,7 +88,7 @@
         </activity>  
         
         <activity
-            android:name="com.liftme.liftmeclient.PreviousTrips"
+            android:name="com.liftme.liftmeclient.PreviousTrip"
             android:label="Previous Trips Page Selected" >
         </activity>
         

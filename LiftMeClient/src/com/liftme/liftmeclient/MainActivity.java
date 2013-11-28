@@ -1,3 +1,4 @@
+//281113 - MtpA -	Only search for location if marker not already set
 //271113 - MtpA -	Added code for ratings button
 //261113 - MtpA -	Added listeners for all buttons and linked through to Profile
 //251113 - MtpA -	Refactored code writeUserXML to createUserXML
@@ -121,7 +122,9 @@ public class MainActivity extends Activity implements LocationListener {
 		} else {
 			Toast.makeText(getBaseContext(),"Waiting for current location", Toast.LENGTH_LONG).show();
 		} // try and refresh maps
-		locationManager.requestLocationUpdates(provider, 20000, 10, this);
+		if (myMarker == null) {
+			locationManager.requestLocationUpdates(provider, 20000, 10, this);
+		}
 
 		//open pop-up window for user ID
 		this.putIDWindow();
@@ -177,7 +180,7 @@ public class MainActivity extends Activity implements LocationListener {
 	class tripsBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
-			Intent profileIntent = new Intent(getApplicationContext(), PreviousTrips.class);
+			Intent profileIntent = new Intent(getApplicationContext(), PreviousTrip.class);
 			startActivity(profileIntent);
 		}
 	}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- Icon shown next to the details -->
+
+    <ImageView
+        android:id="@+id/mapicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:padding="3dp" 
+        android:src="@drawable/map" />
+    
+    <TextView
+        android:id="@+id/tripdestination"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/mapicon"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/mapicon"
+        android:textSize="14sp" />
+
+	<TextView
+        android:id="@+id/tripdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tripdestination"
+        android:layout_below="@id/tripdestination"
+        android:textSize="14sp" />
+
+	<TextView
+        android:id="@+id/triptime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tripdate"
+        android:layout_below="@id/tripdate"
+        android:textSize="14sp" />
+	
+	<TextView
+        android:id="@+id/triplifter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/triptime"
+        android:layout_below="@id/triptime"
+        android:textSize="14sp" />
+
+	<ImageView
+	    android:id="@+id/separator"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/triplifter"
+	    android:padding="5dp"
+	    android:src="@drawable/line" />
+			
+</RelativeLayout>
