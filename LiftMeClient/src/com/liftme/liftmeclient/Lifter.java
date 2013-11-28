@@ -40,7 +40,7 @@ public class Lifter extends Activity {
  
 	static final int TIME_DIALOG_ID = 999;
 
-	static final int DATE_DIALOG_ID = 998;
+	static final int DATE_DIALOG_ID = 999;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
