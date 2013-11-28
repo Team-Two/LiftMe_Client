@@ -210,37 +210,36 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="238dp"
+            <TextView
+                android:id="@+id/likes"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Likes, Dislikes"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/likes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Likes, Dislikes"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal" >
 
-                <ImageButton
-                    android:id="@+id/likeBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:src="@drawable/likebutton" />
+            <ImageButton
+                android:id="@+id/likeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/likebutton" />
 
-                <ImageButton
-                    android:id="@+id/dislikeBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:src="@drawable/dislikebutton" />
+            <ImageButton
+                android:id="@+id/dislikeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:src="@drawable/dislikebutton" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
