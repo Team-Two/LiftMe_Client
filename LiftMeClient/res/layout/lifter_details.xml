@@ -31,7 +31,6 @@
             android:text="Select Destination" />
     </LinearLayout>
     
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="68dp"
