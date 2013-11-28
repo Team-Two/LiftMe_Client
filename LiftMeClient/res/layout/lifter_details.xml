@@ -30,6 +30,7 @@
             android:background="@drawable/blue_button"
             android:text="Select Destination" />
     </LinearLayout>
+    
 
     <LinearLayout
         android:layout_width="match_parent"
