@@ -1,3 +1,4 @@
+//271113 - MtpA -	Amended a == to .equals to get proper string equivelance
 //261113 - MtpA -	Refactored to reflect destination list and to draw data from destinations.xml
 //111113 - MtpA -	Class created.  List of providers taken from provider_data.xml in values folder
 //					Initial proof of concept
@@ -57,10 +58,13 @@ public class DestinationList extends ListActivity {
 			String destination = ((TextView) view).getText().toString();
 			Intent mainIntent;
 			// Launching new Activity on selecting single List Item
-			if (callingActivity == "Liftee" || callingActivity == null) {
+			if (callingActivity.equals("Liftee")) {
 				mainIntent = new Intent(getApplicationContext(), MainActivity.class);				
-			} else {
+			} else if (callingActivity.equals("Lifter")) {
 				mainIntent = new Intent(getApplicationContext(), Lifter.class);
+			} else {
+				mainIntent = new Intent(getApplicationContext(), MainActivity.class);				
+				Toast.makeText(getBaseContext(),"Problem with returning to controlling activity <<" + callingActivity + ">>", Toast.LENGTH_LONG).show();
 			}
 			// sending data to new activity
 			mainIntent.putExtra("destination", destination);
