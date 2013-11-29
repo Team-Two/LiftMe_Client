@@ -162,4 +162,58 @@ public class XMLImport {
         return prevTrips;
 	} // method importPreviousTrips
 	
+	public ProfileInfo importProfileInfo(String xmlData) {
+		final String USER_NAME = "Name"; // parent node
+		final String DIST_TRAVELLED = "DistTravelled";
+		final String LIFTER_COUNT = "LifterCount";
+		final String LIFTEE_COUNT = "LifteeCount";
+		final String ROOT = "Profile";
+
+		final String SUB_ROOT = "Feedback";
+		final String FB_NAME = "FBName";
+		final String FB_DATE = "FBDate";
+		final String FB_COMMENT = "FBComment";
+		final String FB_LIKE = "FBLike";
+
+		String name = "";
+		String distTravelled = "";
+		String lifterCount = "";
+		String lifteeCount = "";
+
+		String fbName = "";
+		String fbDate = "";
+		String fbComment = "";
+		String fbLike = "";
+
+		ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
+
+		Document doc = getDomElement(xmlData); // getting DOM element
+		NodeList nodeList = doc.getElementsByTagName(ROOT);
+		// looping through all item nodes <item>
+		for (int i = 0; i < nodeList.getLength(); i++) {
+			Element nodeElement = (Element) nodeList.item(i);
+			// adding each child node to variable list
+			name = getXMLValue(nodeElement, USER_NAME);
+			distTravelled = getXMLValue(nodeElement, DIST_TRAVELLED);
+			lifterCount = getXMLValue(nodeElement,LIFTER_COUNT);
+			lifteeCount = getXMLValue(nodeElement, LIFTEE_COUNT);
+
+			NodeList nodeList2= doc.getElementsByTagName(getXMLValue(nodeElement, SUB_ROOT));
+
+			for(int j=0;j<nodeList2.getLength();j++){
+
+				Element nodeElement2 = (Element) nodeList2.item(j);
+
+				fbName=getXMLValue(nodeElement2, FB_NAME);
+				fbDate=getXMLValue(nodeElement2, FB_DATE);
+				fbComment=getXMLValue(nodeElement2, FB_COMMENT);
+				fbLike=getXMLValue(nodeElement2,FB_LIKE);
+
+				feedbacks.add(new Feedback(fbName,fbDate,fbComment,fbLike));
+			}
+		}
+
+		return new ProfileInfo(name, distTravelled, lifterCount, lifteeCount, feedbacks);
+	} // method ProfileInfo
+	
 } // class XMLImport
