@@ -90,7 +90,6 @@
             android:text="Current Date (M-D-YYYY): "
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginLeft="5dp"
-            android:layout_gravity="center"
             android:textColor="@color/black" />
 
         <TextView
@@ -99,7 +98,6 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_gravity="center"
             android:textColor="@color/black" />
 
         <DatePicker

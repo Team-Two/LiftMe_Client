@@ -162,12 +162,13 @@ public class XMLImport {
         return prevTrips;
 	} // method importPreviousTrips
 	
-	public ProfileInfo importProfileInfo(String xmlData) {
+	public ProfileInfo importProfileInfo(String xmlData) throws ParserConfigurationException, SAXException, IOException {
+		
 		final String USER_NAME = "Name"; // parent node
 		final String DIST_TRAVELLED = "DistTravelled";
 		final String LIFTER_COUNT = "LifterCount";
 		final String LIFTEE_COUNT = "LifteeCount";
-		final String ROOT = "Profile";
+		final String ROOT = "ProfileInfo";
 
 		final String SUB_ROOT = "Feedback";
 		final String FB_NAME = "FBName";
@@ -187,31 +188,48 @@ public class XMLImport {
 
 		ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
 
-		Document doc = getDomElement(xmlData); // getting DOM element
+		File fXmlFile = new File(xmlData);
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(fXmlFile);
+
+		doc.getDocumentElement().normalize();
+
 		NodeList nodeList = doc.getElementsByTagName(ROOT);
+
 		// looping through all item nodes <item>
 		for (int i = 0; i < nodeList.getLength(); i++) {
-			Element nodeElement = (Element) nodeList.item(i);
-			// adding each child node to variable list
-			name = getXMLValue(nodeElement, USER_NAME);
-			distTravelled = getXMLValue(nodeElement, DIST_TRAVELLED);
-			lifterCount = getXMLValue(nodeElement,LIFTER_COUNT);
-			lifteeCount = getXMLValue(nodeElement, LIFTEE_COUNT);
 
-			NodeList nodeList2= doc.getElementsByTagName(getXMLValue(nodeElement, SUB_ROOT));
+			Node nNode = nodeList.item(i);
 
-			for(int j=0;j<nodeList2.getLength();j++){
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
-				Element nodeElement2 = (Element) nodeList2.item(j);
+				Element eElement = (Element) nNode;
+				
+				name=eElement.getElementsByTagName(USER_NAME).item(0).getTextContent();
+				distTravelled=eElement.getElementsByTagName(DIST_TRAVELLED).item(0).getTextContent();
+				lifterCount=eElement.getElementsByTagName(LIFTER_COUNT).item(0).getTextContent();
+				lifteeCount=eElement.getElementsByTagName(LIFTEE_COUNT).item(0).getTextContent();
 
-				fbName=getXMLValue(nodeElement2, FB_NAME);
-				fbDate=getXMLValue(nodeElement2, FB_DATE);
-				fbComment=getXMLValue(nodeElement2, FB_COMMENT);
-				fbLike=getXMLValue(nodeElement2,FB_LIKE);
-
-				feedbacks.add(new Feedback(fbName,fbDate,fbComment,fbLike));
 			}
+
 		}
+
+		NodeList nodeList2 = doc.getElementsByTagName(SUB_ROOT);
+
+		for (int i = 0; i < nodeList2.getLength(); i++) {
+
+			Node nNode = nodeList2.item(i);
+			Element eElement = (Element) nNode;
+
+			System.out.println("Name : " + eElement.getElementsByTagName(FB_NAME).item(0).getTextContent());
+			System.out.println("Date : " + eElement.getElementsByTagName(FB_DATE).item(0).getTextContent());
+			System.out.println("Comment: " + eElement.getElementsByTagName(FB_COMMENT).item(0).getTextContent());
+			System.out.println("Like : " + eElement.getElementsByTagName(FB_LIKE).item(0).getTextContent());
+
+		}
+
+			feedbacks.add(new Feedback(fbName,fbDate,fbComment,fbLike));
 
 		return new ProfileInfo(name, distTravelled, lifterCount, lifteeCount, feedbacks);
 	} // method ProfileInfo
