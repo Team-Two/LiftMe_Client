@@ -37,8 +37,8 @@
         android:id="@+id/likes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/nameDate"
-        android:layout_below="@id/nameDate"
+        android:layout_alignLeft="@id/comment"
+        android:layout_below="@id/comment"
         android:textSize="14sp"
         android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/likes"
-        android:layout_below="@id/nameDate"
+        android:layout_below="@id/comment"
         android:src="@drawable/likebutton" />
 
     <ImageButton
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/likeBtn"
-        android:layout_below="@id/nameDate"
+        android:layout_below="@id/comment"
         android:src="@drawable/dislikebutton" />
     
     <ImageView

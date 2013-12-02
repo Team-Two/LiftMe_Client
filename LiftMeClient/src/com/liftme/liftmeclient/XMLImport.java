@@ -189,13 +189,14 @@ public class XMLImport {
 
 		ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
 
-		File fXmlFile = new File(xmlData);
+/*		File fXmlFile = new File(xmlData);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);
 
 		doc.getDocumentElement().normalize();
-
+*/
+	    Document doc = getDomElement(xmlData); // getting DOM element
 		NodeList nodeList = doc.getElementsByTagName(ROOT);
 
 		// looping through all item nodes <item>
@@ -223,14 +224,15 @@ public class XMLImport {
 			Node nNode = nodeList2.item(i);
 			Element eElement = (Element) nNode;
 
-			System.out.println("Name : " + eElement.getElementsByTagName(FB_NAME).item(0).getTextContent());
-			System.out.println("Date : " + eElement.getElementsByTagName(FB_DATE).item(0).getTextContent());
-			System.out.println("Comment: " + eElement.getElementsByTagName(FB_COMMENT).item(0).getTextContent());
-			System.out.println("Like : " + eElement.getElementsByTagName(FB_LIKE).item(0).getTextContent());
-
+			fbName=eElement.getElementsByTagName(FB_NAME).item(0).getTextContent();
+			fbDate=eElement.getElementsByTagName(FB_DATE).item(0).getTextContent();
+			fbComment=eElement.getElementsByTagName(FB_COMMENT).item(0).getTextContent();
+			fbLike=eElement.getElementsByTagName(FB_LIKE).item(0).getTextContent();
+			
+			feedbacks.add(new Feedback(fbName,fbDate,fbComment,fbLike));
 		}
 
-			feedbacks.add(new Feedback(fbName,fbDate,fbComment,fbLike));
+			
 
 		return new ProfileInfo(name, distTravelled, lifterCount, lifteeCount, feedbacks);
 	} // method ProfileInfo

@@ -1,3 +1,4 @@
+//021213 - MtpA -	Amended directory variable for profile
 //261113 - MtpA -	Created class
 
 package com.liftme.liftmeclient;
@@ -20,19 +21,26 @@ public class Profile extends Activity {
 
 	private Resources resourceVals;
 	private ProfileInfo profile;
-	final TextView profileName = (TextView) findViewById(R.id.proName);
-	final TextView distTravelled = (TextView) findViewById(R.id.distance);
-	final TextView lifterCount = (TextView) findViewById(R.id.lifter);
-	final TextView lifteeCount = (TextView) findViewById(R.id.liftee);
+	private TextView profileName;
+	private TextView distTravelled;
+	private TextView lifterCount;
+	private TextView lifteeCount;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.temp_profile_title);
+		profileName = (TextView) findViewById(R.id.proName);
+		distTravelled = (TextView) findViewById(R.id.distance);
+		lifterCount = (TextView) findViewById(R.id.lifter);
+		lifteeCount = (TextView) findViewById(R.id.liftee);
 		Toast.makeText(getBaseContext(),"Looking at the profile", Toast.LENGTH_LONG).show();
 		getProfileInfo();
 		final ListView feedbacksView = (ListView) findViewById(R.id.listPro);
 		final FeedbacksAdapter feedbacksAdapter = new FeedbacksAdapter(this, R.layout.temp_feedbacks);
 		feedbacksView.setAdapter(feedbacksAdapter);
+		for(Feedback currFeedback : profile.getComments()) {
+			feedbacksAdapter.add(currFeedback);
+		}
 
 		
 		// Populate the list, through the adapter
@@ -48,11 +56,11 @@ public class Profile extends Activity {
 		resourceVals = getResources();
 		XMLImport importFile = new XMLImport();
 		try {
-			String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.registerXmlDir), resourceVals.getString(R.string.profileXmlFileName));				
+			String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.profileXmlDir), resourceVals.getString(R.string.profileXmlFileName));				
 			XMLImport parserXML = new XMLImport();
 			profile = (parserXML.importProfileInfo(xmlData));
 			if (profile == null) {
-				Toast.makeText(getBaseContext(),"Nothing in prevTrips ArrayList", Toast.LENGTH_LONG).show();				
+				Toast.makeText(getBaseContext(),"Nothing in profile ArrayList", Toast.LENGTH_LONG).show();				
 			}
 			else{
 				profileName.setText(profile.getName());
@@ -61,7 +69,7 @@ public class Profile extends Activity {
 				lifteeCount.setText("Number Of Times Being Liftee: "+ profile.getLifteeCount());
 			}
 		} catch (Exception e) {
-			Toast.makeText(getBaseContext(),"All fell apart reading in previous trips", Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(),"All fell apart reading in profile", Toast.LENGTH_LONG).show();
 		}
 	}
 
@@ -92,8 +100,8 @@ public class Profile extends Activity {
 			final ViewHolder viewHolder = getViewHolder(view);
 			final Feedback feedbacks = getItem(position);
 			viewHolder.fb_nameDate.setText(feedbacks.getName()+" "+feedbacks.getDate());
-			viewHolder.fb_comment.setText("Time : " + feedbacks.getComment());
-			viewHolder.fb_like.setText("Lifter : " + feedbacks.getLike());
+			viewHolder.fb_comment.setText("Comment : " + feedbacks.getComment());
+			viewHolder.fb_like.setText("Likes : " + feedbacks.getLike());
 			return view;
 		}
 

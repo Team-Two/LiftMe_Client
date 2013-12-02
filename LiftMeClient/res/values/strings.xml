@@ -8,6 +8,7 @@
     <string name="xmlDir">/location_xml</string>
     <string name="xmlLocFileName">Location_</string>
     <string name="registerXmlDir">/destination_xml/</string>
+    <string name="profileXmlDir">/liftme_profile/</string>
     <string name="registerXmlFileName">confirmregister.xml</string>
     <string name="profileXmlFileName">ZZ_Profile.xml</string>
     <string name="tripsXmlFileName">ZZ_Trips.xml</string>
