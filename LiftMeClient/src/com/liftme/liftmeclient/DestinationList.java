@@ -1,3 +1,4 @@
+//021213 - MtpA -	Split return parameters into destination, lat and long
 //271113 - MtpA -	Amended a == to .equals to get proper string equivelance
 //261113 - MtpA -	Refactored to reflect destination list and to draw data from destinations.xml
 //111113 - MtpA -	Class created.  List of providers taken from provider_data.xml in values folder
@@ -19,12 +20,13 @@ import android.widget.Toast;
 public class DestinationList extends ListActivity {
 	
 	private String callingActivity;
+	private String[] destinationLines;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// storing string resources into Array
-		String[] destinationLines = getResources().getStringArray(R.array.destinations);
+		destinationLines = getResources().getStringArray(R.array.destinations);
 		String[] destinationValues = new String[3];
 		String[] destinations = new String[destinationLines.length];
 
@@ -56,6 +58,8 @@ public class DestinationList extends ListActivity {
 			callingActivity = currIntent.getStringExtra("Activity");
 			// selected item
 			String destination = ((TextView) view).getText().toString();
+			String destLine = destinationLines[position];
+			String splitLine[] = destLine.split(":");
 			Intent mainIntent;
 			// Launching new Activity on selecting single List Item
 			if (callingActivity.equals("Liftee")) {
@@ -68,6 +72,8 @@ public class DestinationList extends ListActivity {
 			}
 			// sending data to new activity
 			mainIntent.putExtra("destination", destination);
+			mainIntent.putExtra("lat", splitLine[1]);
+			mainIntent.putExtra("long", splitLine[2]);
 			mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(mainIntent);
 		}

@@ -4,4 +4,9 @@
     <color name="sandy">#fbd084</color>
     <color name="white">#ffffff</color>
     <color name="black">#010101</color>
+    <color name="red">#f21123</color>
+    <color name="purple">#f211df</color>
+    <color name="blue">#4d11f2</color>
+    <color name="cyan">#11f2f2</color>
+    <color name="green">#11f220</color>
 </resources>

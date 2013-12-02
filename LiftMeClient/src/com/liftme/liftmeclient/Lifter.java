@@ -1,8 +1,10 @@
+//021213 - MtpA -	Added button listener for the trip button
 //271113 - MtpA -	Just added a comment
 //271113 - MtpA -        Added pass parameter to destination list
 //241113 - MtpA -        Created class
 package com.liftme.liftmeclient;
 
+import java.security.Provider;
 import java.util.Calendar;
 
 import com.liftme.liftmeclient.MainActivity.destBtnListener;
@@ -12,7 +14,11 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +50,11 @@ public class Lifter extends Activity {
 
         static final int DATE_DIALOG_ID = 998;
         
+        private Button btnSaveTrip;
+        private String selectedDest;
+        private String selectedLat;
+        private String selectedLong;
+        
         @Override
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
@@ -60,6 +71,10 @@ public class Lifter extends Activity {
 
                 setCurrentDateOnView();
                 setCurrentTimeOnView();
+        
+                btnSaveTrip = (Button) findViewById(R.id.tripButton);
+                btnSaveTrip.setOnClickListener(new saveTripBtnListener());
+
         }
 
 
@@ -68,13 +83,46 @@ public class Lifter extends Activity {
                 super.onResume();
                 
                 Intent currIntent = getIntent();
-    			String selectedDest = currIntent.getStringExtra("destination");
-    			Toast.makeText(getBaseContext(),"Destination Selected "+selectedDest, Toast.LENGTH_LONG).show();
+    			selectedDest = currIntent.getStringExtra("destination");
+    			selectedLat = currIntent.getStringExtra("lat");
+    			selectedLong = currIntent.getStringExtra("long");
     			TextView destText = (TextView) findViewById(R.id.destField);
     			destText.setText(selectedDest);
     			
     			
         } // method onResume
+
+        class saveTripBtnListener implements View.OnClickListener {
+
+        	private Location thisLoc;
+        	private CurrentLocation currLoc;
+    		private String deviceId = Settings.Secure.getString(getContentResolver(),Settings.Secure.ANDROID_ID);
+
+
+        	@Override
+            public void onClick(View v) {
+            	final String DD = String.format("%02d", dpResult.getDayOfMonth());
+            	final String MM = String.format("%02d", dpResult.getMonth());
+            	final String YYYY = Integer.toString(dpResult.getYear());
+            	final String YYYY_MM_DD = YYYY + ":" + MM + ":" + DD;
+            	final String HOUR = String.format("%02d", timePicker1.getCurrentHour());
+            	final String MIN = String.format("%02d", timePicker1.getCurrentMinute());
+            	final String HH_MM_SS = HOUR + ":" + MIN + ":" + "00";
+            	final String[] lifters = getResources().getStringArray(R.array.lifters);
+            	
+    			currLoc = new CurrentLocation(getApplicationContext());
+    			thisLoc = currLoc.getLocation();
+    			int lifterNum = (int) (Math.random() * 5);
+    			String[] lifterDetails = lifters[lifterNum].split(":");
+    			String lifterName = lifterDetails[0];
+    			String lifterLat = Double.toString(currLoc.getLatitude());
+    			String lifterLong = Double.toString(currLoc.getLongitude());
+    			LifterTrip currLift = new LifterTrip(lifterName, selectedDest, selectedLat, selectedLong, lifterLat, lifterLong, YYYY_MM_DD, HH_MM_SS);
+				XMLExport loginXML = new XMLExport();
+				String tripXML = loginXML.createTripXml(currLift, deviceId);
+		        Toast.makeText(getBaseContext(),tripXML, Toast.LENGTH_LONG).show();
+            }
+        }
 
         class destBtnListener implements View.OnClickListener {
                 @Override

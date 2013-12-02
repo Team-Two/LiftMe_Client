@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lifters">
+        <item>Mikey:red</item>
+        <item>Richard:green</item>
+        <item>Michelle:blue</item>
+        <item>Emre:purple</item>
+        <item>Mark:cyan</item>
+    </string-array>
+</resources>

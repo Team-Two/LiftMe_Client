@@ -9,8 +9,10 @@
     <string name="xmlLocFileName">Location_</string>
     <string name="registerXmlDir">/destination_xml/</string>
     <string name="profileXmlDir">/liftme_profile/</string>
+    <string name="lifterXmlDir">/destination_xml/</string>
     <string name="registerXmlFileName">confirmregister.xml</string>
     <string name="profileXmlFileName">ZZ_Profile.xml</string>
+    <string name="lifterXmlFileName">Lifter.xml</string>
     <string name="tripsXmlFileName">ZZ_Trips.xml</string>
     <string name="caricon">Car icon</string>
     <string name="diskicon">Disk icon</string>

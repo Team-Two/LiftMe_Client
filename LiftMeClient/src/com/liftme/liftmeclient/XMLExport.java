@@ -163,4 +163,44 @@ public class XMLExport {
 		} 
 	} // method writeUserXml (overloaded - calendar argument)
 
+	public String createTripXml(LifterTrip vCurrTrip, String vDeviceID){
+		XmlSerializer serializer = Xml.newSerializer();
+		StringWriter writer = new StringWriter();
+		try {
+			serializer.setOutput(writer);
+			serializer.startDocument("UTF-8", true);
+			serializer.startTag("", "Trip");
+			serializer.attribute("", "deviceid", vDeviceID);
+			serializer.startTag("", "Lifter");
+			serializer.text(vCurrTrip.getLifterName());
+			serializer.endTag("", "Lifter");
+			serializer.startTag("", "LifterLat");
+			serializer.text(vCurrTrip.getLifterCurrLat());
+			serializer.endTag("", "LifterLat");
+			serializer.startTag("", "LifterLong");
+			serializer.text(vCurrTrip.getLifterCurrLong());
+			serializer.endTag("", "LifterLong");
+			serializer.startTag("", "LifterDestination");
+			serializer.text(vCurrTrip.getLifterDestination());
+			serializer.endTag("", "LifterDestination");
+			serializer.startTag("", "DestinationLat");
+			serializer.text(vCurrTrip.getDestLat());
+			serializer.endTag("", "DestinationLat");
+			serializer.startTag("", "DestinationLong");
+			serializer.text(vCurrTrip.getDestLong());
+			serializer.endTag("", "DestinationLong");
+			serializer.startTag("", "TripDate");
+			serializer.text(vCurrTrip.getLifterDate());
+			serializer.endTag("", "TripDate");
+			serializer.startTag("", "TripTime");
+			serializer.text(vCurrTrip.getLifterTime());
+			serializer.endTag("", "TripTime");
+			serializer.endTag("", "Trip");
+			serializer.endDocument();
+			return writer.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} 
+	} // method createTripXml
+	
 } // class XMLExport
