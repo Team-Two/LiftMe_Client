@@ -98,10 +98,10 @@
         <!-- Google API Key AIzaSyDkigAc5cG9EmRMIlx9Pq1bPiqpb-JGTR4 Mikey got bored too-->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDAYwavkjBvNQPVzyKOmMVI2rjytysKj7M"/>
-		 <meta-data
+            android:value="AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik"/>
+	<!-- 	 <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />  
+            android:value="@integer/google_play_services_version" />   -->
     </application>
  
 </manifest>

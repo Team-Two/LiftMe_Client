@@ -148,13 +148,13 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/imageButton"
+        android:id="@+id/tripButton"
         style="@style/ButtonText"
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="@drawable/green_button"
-        android:text="Send Request" >
+        android:text="Add Trip" >
     </Button>
 
 </LinearLayout>
