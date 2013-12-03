@@ -37,7 +37,7 @@ public class StatsFeedbacks extends Activity {
 		telNo = (TextView) findViewById(R.id.telno);
 		plateNo = (TextView) findViewById(R.id.plateno);
 		Toast.makeText(getBaseContext(),"Looking at the Stats & Feedbacks", Toast.LENGTH_LONG).show();
-		getProfileInfo();
+		getStatsInfo();
 		final ListView feedbacksView = (ListView) findViewById(R.id.listPro);
 		final FeedbacksAdapter feedbacksAdapter = new FeedbacksAdapter(this, R.layout.temp_feedbacks);
 		feedbacksView.setAdapter(feedbacksAdapter);
@@ -55,15 +55,15 @@ public class StatsFeedbacks extends Activity {
 		super.onResume();
 	} // method onResume
 
-	private void getProfileInfo() {
+	private void getStatsInfo() {
 		resourceVals = getResources();
 		XMLImport importFile = new XMLImport();
 		try {
-			String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.profileXmlFileName), resourceVals.getString(R.string.profileXmlFileName));				
+			String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.statsXmlDir), resourceVals.getString(R.string.statsXmlFileName));				
 			XMLImport parserXML = new XMLImport();
 			stats = (parserXML.importStatsInfo(xmlData));
 			if (stats == null) {
-				Toast.makeText(getBaseContext(),"Nothing in profile ArrayList", Toast.LENGTH_LONG).show();				
+				Toast.makeText(getBaseContext(),"Nothing in Stats ArrayList", Toast.LENGTH_LONG).show();				
 			}
 			else{
 				profileName.setText(stats.getName());

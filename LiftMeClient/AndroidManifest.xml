@@ -83,7 +83,7 @@
         </activity>  
         
         <activity
-            android:name="com.liftme.liftmeclient.Rating"
+            android:name="com.liftme.liftmeclient.StatsFeedbacks"
             android:label="Rating Page Selected" >
         </activity>  
         
@@ -99,9 +99,9 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik"/>
-	<!-- 	 <meta-data
+	 	 <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />   -->
+            android:value="@integer/google_play_services_version" />   
     </application>
  
 </manifest>

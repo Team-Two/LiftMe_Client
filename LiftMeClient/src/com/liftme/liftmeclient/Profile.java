@@ -59,7 +59,7 @@ public class Profile extends Activity {
 		XMLImport importFile = new XMLImport();
 		try {
 
-			String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.profileXmlFileName), resourceVals.getString(R.string.profileXmlFileName));				
+			String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.profileXmlDir), resourceVals.getString(R.string.profileXmlFileName));				
 
 			XMLImport parserXML = new XMLImport();
 			profile = (parserXML.importProfileInfo(xmlData));

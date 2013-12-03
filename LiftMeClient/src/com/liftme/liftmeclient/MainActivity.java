@@ -172,8 +172,8 @@ public class MainActivity extends Activity implements LocationListener {
 	class ratingsBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
-			Intent profileIntent = new Intent(getApplicationContext(), Rating.class);
-			startActivity(profileIntent);
+			Intent statsIntent = new Intent(getApplicationContext(), StatsFeedbacks.class);
+			startActivity(statsIntent);
 		}
 	}
 

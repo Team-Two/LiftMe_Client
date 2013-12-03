@@ -304,9 +304,9 @@ public class XMLImport {
 			fbLike=eElement.getElementsByTagName(FB_LIKE).item(0).getTextContent();
 			fbDislike=eElement.getElementsByTagName(FB_DISLIKE).item(0).getTextContent();
 
+			feedbacks.add(new Feedback(fbName,fbDate,fbComment,fbLike,fbDislike));
 		}
 
-		feedbacks.add(new Feedback(fbName,fbDate,fbComment,fbLike,fbDislike));
 
 		return new StatsInfo(name, address, telNo, plateNo, feedbacks, distTravelled, lifterCount, lifteeCount);
 	} // method StatsInfo
