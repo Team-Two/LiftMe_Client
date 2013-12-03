@@ -1,3 +1,4 @@
+//031213 - MtpA -	Add click listener for marker
 //281113 - MtpA -	Only search for location if marker not already set
 //271113 - MtpA -	Added code for ratings button
 //261113 - MtpA -	Added listeners for all buttons and linked through to Profile
@@ -29,6 +30,7 @@
 package com.liftme.liftmeclient;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -59,14 +61,16 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 
-public class MainActivity extends Activity implements LocationListener {
+public class MainActivity extends Activity implements LocationListener, OnMarkerClickListener {
 
 	// Google Map
 	private GoogleMap googleMap;
@@ -85,6 +89,7 @@ public class MainActivity extends Activity implements LocationListener {
 	private Resources resourceVals;
 	private double lat = 0;
 	private double lng = 0;
+	private HashMap<String, MarkerOptions> lifterHashMap = new HashMap<String, MarkerOptions>();
 
 	//user ID Window
 	Button  btnClosePopup;
@@ -97,11 +102,6 @@ public class MainActivity extends Activity implements LocationListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		//Launching new Activity on selecting single List Item
-//		Intent i = new Intent(getApplicationContext(), FirstPage.class);
-		//sending data to new activity
-//		startActivity(i);
 
 		// show buttons
 		saveButton = (ImageButton) findViewById(R.id.saveBtn);
@@ -118,7 +118,8 @@ public class MainActivity extends Activity implements LocationListener {
 		destinationButton.setOnClickListener(new destBtnListener());
 
 		if (initilizeMap()) {
-			onLocationChanged(location);			
+			googleMap.setOnMarkerClickListener(this);
+			onLocationChanged(location);
 		} else {
 			Toast.makeText(getBaseContext(),"Waiting for current location", Toast.LENGTH_LONG).show();
 		} // try and refresh maps
@@ -129,7 +130,7 @@ public class MainActivity extends Activity implements LocationListener {
 		//open pop-up window for user ID
 		this.putIDWindow();
 	} // method onCreate
-
+	
 	class saveBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
@@ -264,6 +265,11 @@ public class MainActivity extends Activity implements LocationListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		if (getIntent().getStringExtra("destination") != (null)) {
+			String selectedDest = getIntent().getStringExtra("destination");
+			setLifterMarkers();
+			Toast.makeText(getBaseContext(),"Lifts offered to : " + selectedDest, Toast.LENGTH_LONG).show();
+		}
 		if (initilizeMap()) {
 			Toast.makeText(getBaseContext(),"Resume location : " + Double.toString(lat).substring(0, 5) + "," + Double.toString(lng).substring(0, 5), Toast.LENGTH_LONG).show();
 		} else {
@@ -271,21 +277,38 @@ public class MainActivity extends Activity implements LocationListener {
 		} // try and refresh maps
 	} // method onResume
 
+	private void setLifterMarkers() {
+		String[] lifterLines = getResources().getStringArray(R.array.lifters);
+
+		for (String currLine : lifterLines) {
+			String[] lifterValues = currLine.split(":");
+			// create and display marker
+			float iconHue = Float.parseFloat(lifterValues[1]);
+			double lat = Double.parseDouble(lifterValues[2]);
+			double lng = Double.parseDouble(lifterValues[3]);
+			MapMarker lifterMapMarker = new MapMarker(lat, lng, iconHue, "Lifter - " + lifterValues[0]);
+			MarkerOptions lifterMarker = lifterMapMarker.getLocMarker();
+			lifterHashMap.put(lifterMapMarker.getLocName(), lifterMarker);
+			googleMap.addMarker(lifterMarker);
+		}		
+	} // method setLifterMarkers
+
 	@Override
 	public void onLocationChanged(Location location) {
 		// get current location
-		lat = (double) (location.getLatitude());
+/*		lat = (double) (location.getLatitude());
 		lng = (double) (location.getLongitude());
+*/
+		lat = 50.866008;
+		lng = -0.087281;
 		LatLng currPos = new LatLng(lat, lng);
 
 		// set camera zoom level
 		float cameraZoom = (googleMap.getMinZoomLevel() + googleMap.getMaxZoomLevel())/2;
 
 		// create and display marker
-		myMarker = new MarkerOptions();
-		myMarker.position(currPos);
-		myMarker.snippet("Lat:" + location.getLatitude() + "Lng:"+ location.getLongitude());
-		myMarker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).title("ME");
+		MapMarker myMapMarker = new MapMarker(lat, lng, 60, "Mark");
+		myMarker = myMapMarker.getLocMarker();
 		googleMap.addMarker(myMarker);
 		googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currPos, cameraZoom));
 
@@ -301,7 +324,15 @@ public class MainActivity extends Activity implements LocationListener {
 		}
 		Toast.makeText(getBaseContext(),"Current location : " + Double.toString(lat).substring(0, 5) + "," + Double.toString(lng).substring(0, 5), Toast.LENGTH_LONG).show();
 	} // onLocationChanged
-
+    
+	@Override
+    public boolean onMarkerClick(final Marker marker) {
+		Toast.makeText(getBaseContext(),"You selected : " + marker.getTitle(), Toast.LENGTH_LONG).show();
+		Intent statsIntent = new Intent(getApplicationContext(), StatsFeedbacks.class);
+		startActivity(statsIntent);
+		return true;
+    }
+	
 	@Override
 	public void onProviderEnabled(String provider) {
 		Toast.makeText(this, "Enabled new provider " + provider,

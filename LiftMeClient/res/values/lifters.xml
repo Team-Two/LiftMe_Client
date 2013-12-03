@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="lifters">
-        <item>Mikey:red</item>
-        <item>Richard:green</item>
-        <item>Michelle:blue</item>
-        <item>Emre:purple</item>
-        <item>Mark:cyan</item>
+        <item>Mikey:0:50.864207:-0.088708</item>
+        <item>Richard:120:50.859162:-0.088912</item>
+        <item>Michelle:240:50.867823:-0.080856</item>
+        <item>Emre:270:50.871357:-0.088838</item>
+<!--        <item>Mark:60:50.872457:-0.089138</item> -->
     </string-array>
 </resources>

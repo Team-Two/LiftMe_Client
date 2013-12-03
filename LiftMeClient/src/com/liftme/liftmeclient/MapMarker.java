@@ -1,37 +1,48 @@
+//031213 - MtpA -	Added all code to create MapMarker
 //251113 - MtpA -	Create class (empty shell)
 package com.liftme.liftmeclient;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapMarker {
 
-	private final MarkerOptions currMarker;
+	private final double latitude;
+	private final double longditude;
+	private final float markerColour;
+	private final String locName;
+	private final MarkerOptions locMarker;
+	
+	public MapMarker(double vLat, double vLong, float vColour, String vLocName) {
+		this.latitude = vLat;
+		this.longditude = vLong;
+		this.markerColour = vColour;
+		this.locName = vLocName;
+		LatLng currPos = new LatLng(latitude, longditude);
+		locMarker = new MarkerOptions();
+		locMarker.position(currPos);
+		locMarker.snippet("Lat: " + latitude + " Lng: "+ longditude);
+		locMarker.icon(BitmapDescriptorFactory.defaultMarker(vColour)).title(locName);
+	} // MapMarker constructor
 
-	public static class Builder {
-		// Required parameters
-		private final MarkerOptions currMarker;
+	public double getLatitude() {
+		return latitude;
+	}
 
-		// Optional parameters
+	public double getLongditude() {
+		return longditude;
+	}
 
-		public Builder(MarkerOptions vCurrMarker) {
-			this.currMarker = vCurrMarker;
-		} // Builder constructor - no args
+	public float getMarkerColour() {
+		return markerColour;
+	}
 
-		public MapMarker build() throws DataValidationException {
-			if (checkValidFields()) {
-				return new MapMarker(this);
-			} else {
-				throw new DataValidationException();
-			}
-		} // method build
-		
-		private boolean checkValidFields() {
-			return false;
-		} // method checkValidFields
-		
-	} // class Builder
+	public String getLocName() {
+		return locName;
+	}
 
-	private MapMarker(Builder builder) {
-		currMarker = builder.currMarker;
-	} // builder constructor
+	public MarkerOptions getLocMarker() {
+		return locMarker;
+	}
 }
