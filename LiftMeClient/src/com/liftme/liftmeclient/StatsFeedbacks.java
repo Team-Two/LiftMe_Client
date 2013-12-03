@@ -1,8 +1,3 @@
-//021213 - MtpA -	Amended directory variable for profile
-//261113 - MtpA -	Created class
-//021213 - MtpA -	Amended directory variable for profile
- //261113 - MtpA -	Created class
-
 package com.liftme.liftmeclient;
 
 import java.util.ArrayList;
@@ -19,28 +14,34 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Profile extends Activity {
+public class StatsFeedbacks extends Activity {
 
 	private Resources resourceVals;
-	private ProfileInfo profile;
+	private StatsInfo stats;
 	private TextView profileName;
 	private TextView distTravelled;
 	private TextView lifterCount;
 	private TextView lifteeCount;
+	private TextView address;
+	private TextView telNo;
+	private TextView plateNo;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.temp_profile_title);
-		profileName = (TextView) findViewById(R.id.proName);
+		setContentView(R.layout.statsfeedbacks);
+		profileName = (TextView) findViewById(R.id.name);
 		distTravelled = (TextView) findViewById(R.id.distance);
 		lifterCount = (TextView) findViewById(R.id.lifter);
 		lifteeCount = (TextView) findViewById(R.id.liftee);
-		Toast.makeText(getBaseContext(),"Looking at the profile", Toast.LENGTH_LONG).show();
+		address = (TextView) findViewById(R.id.address);
+		telNo = (TextView) findViewById(R.id.telno);
+		plateNo = (TextView) findViewById(R.id.plateno);
+		Toast.makeText(getBaseContext(),"Looking at the Stats & Feedbacks", Toast.LENGTH_LONG).show();
 		getProfileInfo();
 		final ListView feedbacksView = (ListView) findViewById(R.id.listPro);
 		final FeedbacksAdapter feedbacksAdapter = new FeedbacksAdapter(this, R.layout.temp_feedbacks);
 		feedbacksView.setAdapter(feedbacksAdapter);
-		for(Feedback currFeedback : profile.getComments()) {
+		for(Feedback currFeedback : stats.getComments()) {
 			feedbacksAdapter.add(currFeedback);
 		}
 
@@ -58,22 +59,23 @@ public class Profile extends Activity {
 		resourceVals = getResources();
 		XMLImport importFile = new XMLImport();
 		try {
-
 			String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.profileXmlFileName), resourceVals.getString(R.string.profileXmlFileName));				
-
 			XMLImport parserXML = new XMLImport();
-			profile = (parserXML.importProfileInfo(xmlData));
-			if (profile == null) {
+			stats = (parserXML.importStatsInfo(xmlData));
+			if (stats == null) {
 				Toast.makeText(getBaseContext(),"Nothing in profile ArrayList", Toast.LENGTH_LONG).show();				
 			}
 			else{
-				profileName.setText(profile.getName());
-				distTravelled.setText("Total Distance Travelled: "+ profile.getDtravelled());
-				lifterCount.setText("Number Of Times Being Lifter: "+ profile.getLifterCount());
-				lifteeCount.setText("Number Of Times Being Liftee: "+ profile.getLifteeCount());
+				profileName.setText(stats.getName());
+				distTravelled.setText("Total Distance Travelled: "+ stats.getDtravelled());
+				lifterCount.setText("Number Of Times Being Lifter: "+ stats.getLifterCount());
+				lifteeCount.setText("Number Of Times Being Liftee: "+ stats.getLifteeCount());
+				address.setText(stats.getAddress());
+				telNo.setText(stats.getTelNo());
+				plateNo.setText(stats.getPlateNo());
 			}
 		} catch (Exception e) {
-			Toast.makeText(getBaseContext(),"All fell apart reading in profile", Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(),"All fell apart reading in stats & feedbacks", Toast.LENGTH_LONG).show();
 		}
 	}
 
