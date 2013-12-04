@@ -310,5 +310,48 @@ public class XMLImport {
 
 		return new StatsInfo(name, address, telNo, plateNo, feedbacks, distTravelled, lifterCount, lifteeCount);
 	} // method StatsInfo
+	
+	public ArrayList<TripRequest> importRequests(String xmlData) throws ParserConfigurationException, SAXException, IOException {
+
+		final String DEST = "Destination"; // parent node
+		final String DATE = "Date";
+		final String TIME = "Time";
+		final String LIFTEE = "Liftee";
+		final String STATUS = "Status";
+		final String ROOT = "LiftReply";
+		
+		String dest = "";
+		String date = "";
+		String time = "";
+		String liftee = "";
+		String status = "";
+
+		ArrayList<TripRequest> requests = new ArrayList<TripRequest>();
+
+		Document doc = getDomElement(xmlData); // getting DOM element
+
+		NodeList nodeList = doc.getElementsByTagName(ROOT);
+
+		// looping through all item nodes <item>
+		for (int i = 0; i < nodeList.getLength(); i++) {
+
+			Node nNode = nodeList.item(i);
+
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+				Element eElement = (Element) nNode;
+
+				dest=eElement.getElementsByTagName(DEST).item(0).getTextContent();
+				date=eElement.getElementsByTagName(DATE).item(0).getTextContent();
+				time=eElement.getElementsByTagName(TIME).item(0).getTextContent();
+				liftee=eElement.getElementsByTagName(LIFTEE).item(0).getTextContent();
+				status=eElement.getElementsByTagName(STATUS).item(0).getTextContent();
+				
+				requests.add(new TripRequest(dest, date, time, liftee, status));
+			}
+
+		}
+		return requests;
+	} // method StatsInfo
 
 } // class XMLImport

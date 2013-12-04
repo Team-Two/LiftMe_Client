@@ -13,7 +13,7 @@
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:src="@drawable/logo" />
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,9 +42,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp"
         android:orientation="horizontal" >
 
         <Button
@@ -55,15 +55,15 @@
             android:layout_gravity="center"
             android:background="@drawable/blue_button"
             android:text="Select Destination" />
-        
+
         <TextView
             android:id="@+id/destField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -71,8 +71,8 @@
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal" >
 
         <Button
@@ -87,9 +87,9 @@
             android:id="@+id/lblDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="Current Date (M-D-YYYY): "
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginLeft="5dp"
             android:textColor="@color/black" />
 
         <TextView
@@ -110,15 +110,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/btnChangeTime"
+            style="@style/ButtonTextSmaller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/ButtonTextSmaller"
             android:background="@drawable/blue_button"
             android:text="Change Time" />
 
@@ -126,9 +126,9 @@
             android:id="@+id/lblTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="Current Time (H:M): "
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginLeft="5dp"
             android:textColor="@color/black" />
 
         <TextView
@@ -145,14 +145,31 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/tripButton"
-        style="@style/ButtonText"
-        android:layout_width="180dp"
-        android:layout_height="50dp"
+    <LinearLayout
+        android:layout_width="440dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/green_button"
-        android:text="Add Trip" >
-    </Button>
+        android:layout_marginBottom="10dp"
+        android:layout_weight="0.00"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/tripButton"
+            style="@style/ButtonText"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:background="@drawable/green_button"
+            android:text="Add Trip" >
+        </Button>
+
+        <Button
+            android:id="@+id/requestsButton"
+            style="@style/ButtonText"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:background="@drawable/green_button"
+            android:text="See Requests" >
+        </Button>
+    </LinearLayout>
 
 </LinearLayout>

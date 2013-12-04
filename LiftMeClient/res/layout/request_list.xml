@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- Icon shown next to the details -->
+
+    <ImageView
+        android:id="@+id/profilepic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:padding="3dp"
+        android:src="@drawable/profilepic" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/profilepic"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/profilepic"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tripdest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/username"
+        android:layout_below="@id/username"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tripdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tripdest"
+        android:layout_below="@id/tripdest"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/triptime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tripdate"
+        android:layout_below="@id/tripdate"
+        android:textSize="14sp" />
+    
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tripdate"
+        android:textSize="14sp" />
+    
+    <Button
+        android:id="@+id/btnAccept"
+        style="@style/ButtonTextSmaller"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:background="@drawable/blue_button"
+        android:layout_toRightOf="@id/status"
+        android:text="Accept" />
+
+    <Button
+        android:id="@+id/btnDecline"
+        style="@style/ButtonTextSmaller"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:background="@drawable/blue_button"
+        android:layout_toRightOf="@id/btnAccept"
+        android:text="Decline" />
+
+    <ImageView
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/triptime"
+        android:padding="5dp"
+        android:src="@drawable/line" />
+
+</RelativeLayout>

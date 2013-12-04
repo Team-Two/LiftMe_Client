@@ -11,11 +11,13 @@
     <string name="profileXmlDir">/liftme_profile/</string>
     <string name="lifterXmlDir">/destination_xml/</string>
     <string name="statsXmlDir">/liftme_stats/</string>
+    <string name="requestsXmlDir">/liftme_requests/</string>
     <string name="registerXmlFileName">confirmregister.xml</string>
     <string name="profileXmlFileName">ZZ_Profile.xml</string>
     <string name="lifterXmlFileName">Lifter.xml</string>
     <string name="statsXmlFileName">ZZ_Stats.xml</string>
     <string name="tripsXmlFileName">ZZ_Trips.xml</string>
+    <string name="requestsXmlFileName">ZZ_Trips.xml</string>
     <string name="caricon">Car icon</string>
     <string name="diskicon">Disk icon</string>
 

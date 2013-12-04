@@ -34,6 +34,7 @@ public class Lifter extends Activity {
         private TextView tvDisplayDate;
         private DatePicker dpResult;
         private Button btnChangeDate;
+        private Button btnSeeRequests;
 
         private int year;
         private int month;
@@ -74,6 +75,9 @@ public class Lifter extends Activity {
         
                 btnSaveTrip = (Button) findViewById(R.id.tripButton);
                 btnSaveTrip.setOnClickListener(new saveTripBtnListener());
+                
+                btnSeeRequests = (Button) findViewById(R.id.requestsButton);
+                btnSaveTrip.setOnClickListener(new seeRequestsBtnListener());
 
         }
 
@@ -128,12 +132,20 @@ public class Lifter extends Activity {
                 @Override
                 public void onClick(View v) {
                         Intent goIntent = new Intent(getApplicationContext(), DestinationList.class);
-                        goIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        String str="Lifter";
-                        goIntent.putExtra("Activity", str);
                         startActivity(goIntent);
                 }
         }
+        
+        class seeRequestsBtnListener implements View.OnClickListener {
+            @Override
+            public void onClick(View v) {
+                    Intent goIntent = new Intent(getApplicationContext(), Requests.class);
+                    goIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    String str="Lifter";
+                    goIntent.putExtra("Activity", str);
+                    startActivity(goIntent);
+            }
+    }
 
         class dateBtnListener implements View.OnClickListener {
                 @SuppressWarnings("deprecation")
