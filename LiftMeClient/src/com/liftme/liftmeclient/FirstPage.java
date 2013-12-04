@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.List;
 
+// Mikey - Communication imports
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -35,6 +36,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+// Mikey - Google Plus imports
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
@@ -125,9 +127,10 @@ ConnectionCallbacks, OnConnectionFailedListener {
 
 		@Override
 		public void onClick(View v) {
-//				MyAsyncTask mat = new MyAsyncTask();
-//				mat.execute("hello");
-//mtpa temp - create user registration details
+			MyAsyncTask mat = new MyAsyncTask();
+
+			// pull user registration details from form to send to server
+			
 			final EditText email = (EditText)findViewById(R.id.editText1); 
 			final EditText username = (EditText)findViewById(R.id.editText2); 
 			final EditText password = (EditText)findViewById(R.id.editText3); 
@@ -140,8 +143,9 @@ ConnectionCallbacks, OnConnectionFailedListener {
 				userXML = loginXML.createUserXml(loginDetails, deviceId, calToday);
 		        Toast.makeText(getBaseContext(),userXML, Toast.LENGTH_LONG).show();
 			}
-//				mat.execute(userXML);
-//mtpa temp
+			
+			//mat.execute(userEmail,userName,userPass);
+			
 			Intent intent = new Intent(FirstPage.this, UserOption.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
@@ -228,7 +232,7 @@ ConnectionCallbacks, OnConnectionFailedListener {
 		@Override
 		protected Double doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			postData("hello");
+			postData(params);
 			return null;
 		}
 
@@ -240,34 +244,22 @@ ConnectionCallbacks, OnConnectionFailedListener {
 			//pb.setProgress(progress[0]);
 		}
 
-		public void postData(String valueIWantToSend) {
+		public void postData(String... valueIWantToSend) {
 			// Create a new HttpClient and Post Header
 			HttpClient httpclient = new DefaultHttpClient();
-			//HttpPost httppost = new HttpPost("http://10.0.2.2/chotu/index.php");
-			HttpPost httppost = new HttpPost("http://10.0.69.157:8080/com.liftme/registerauser.html");
+			HttpPost httppost = new HttpPost("http://10.0.56.153:8080/com.liftme/rest/registerusers");
 			try {
 
 				// Add your data
 				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 				//mtpa temp - establish connection with temp data
-				nameValuePairs.add(new BasicNameValuePair("name", valueIWantToSend));
-				nameValuePairs.add(new BasicNameValuePair("email", valueIWantToSend));
-				nameValuePairs.add(new BasicNameValuePair("password", valueIWantToSend));
+				
+				nameValuePairs.add(new BasicNameValuePair("name", valueIWantToSend[0]));
+				nameValuePairs.add(new BasicNameValuePair("email", valueIWantToSend[1]));
+				nameValuePairs.add(new BasicNameValuePair("password", valueIWantToSend[2]));
 				//mtpa temp - establish connection with temp data
 				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-				// Execute HTTP Post Request
-				//mtpa temp
-				//                Thread.currentThread().setContextClassLoader(new ClassLoader() {
-				//                    @Override
-				//                    public Enumeration<URL> getResources(String resName) throws IOException {
-				//                        Log.i("Debug", "Stack trace of who uses " +
-				//                                "Thread.currentThread().getContextClassLoader()." +
-				//                                "getResources(String resName):", new Exception());
-				//                        return super.getResources(resName);
-				//                    }
-				//                });
-				//mtpa temp
 				Log.i("asdf","before");
 				HttpResponse response = httpclient.execute(httppost);
 				Log.i("asdf",response.toString());

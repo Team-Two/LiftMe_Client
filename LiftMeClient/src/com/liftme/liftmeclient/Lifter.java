@@ -131,8 +131,12 @@ public class Lifter extends Activity {
         class destBtnListener implements View.OnClickListener {
                 @Override
                 public void onClick(View v) {
-                        Intent goIntent = new Intent(getApplicationContext(), DestinationList.class);
-                        startActivity(goIntent);
+
+                	// Bug fix!! ;/ 
+        			String str="Liftee";
+            		Intent goIntent = new Intent(getApplicationContext(), DestinationList.class);                    
+        			goIntent.putExtra("Activity", str);
+                    startActivity(goIntent);
                 }
         }
         
