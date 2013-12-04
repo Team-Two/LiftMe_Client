@@ -133,7 +133,7 @@ public class Lifter extends Activity {
                 public void onClick(View v) {
 
                 	// Bug fix!! ;/ 
-        			String str="Liftee";
+        			String str="Lifter";
             		Intent goIntent = new Intent(getApplicationContext(), DestinationList.class);                    
         			goIntent.putExtra("Activity", str);
                     startActivity(goIntent);

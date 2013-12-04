@@ -35,7 +35,8 @@ public class XMLImport {
 	public String readSDXMLData(String fileDir, String fileName) throws Exception {
 		File root = null;
 		// check for SDcard  
-		root = Environment.getExternalStorageDirectory(); 
+		root = Environment.getExternalStorageDirectory();
+		Log.i("XMLImport", "getting stuff from "+ root.toString());
 
 		//check sdcard permission 
 		if (root.canRead()){
