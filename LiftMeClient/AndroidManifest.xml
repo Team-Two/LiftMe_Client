@@ -92,6 +92,11 @@
             android:label="Previous Trips Page Selected" >
         </activity>
         
+        <activity
+            android:name="com.liftme.liftmeclient.Rating"
+            android:label="Ratings Page Selected" >
+        </activity>
+        
         <!-- Google API Key AIzaSyBMpf2g6DoQ8-BJDGuIICcs6G7FQYBM9ik  Mark's key -->
         <!-- Google API Key AIzaSyBWuLJIZE1Vo9zX-OHO5MR8rj_T1o16Qt8 Eyvgeny's key -->
         <!-- Google API Key AIzaSyDAYwavkjBvNQPVzyKOmMVI2rjytysKj7M Emre got bored too-->

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    
+    <ImageView
+        android:id="@+id/ratingLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="3dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/lblRating"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:layout_marginTop="16dp"
+        android:text="Rating :"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/tripDislikeBtn"
+        android:contentDescription="@string/dislikeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textComment"
+        android:layout_alignTop="@+id/tripLikeBtn"
+        android:src="@drawable/thumb_down" />
+
+    <TextView
+        android:id="@+id/lblComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblRating"
+        android:layout_below="@+id/lblRating"
+        android:layout_marginTop="24dp"
+        android:text="Comment :"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/textComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblComment"
+        android:layout_alignBottom="@+id/lblComment"
+        android:layout_toRightOf="@+id/lblComment"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="@integer/maxCommentLines"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/submitButton"
+        style="@style/ButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/green_button"
+        android:text="@string/tripsubmitBtn" />
+
+    <EditText
+        android:id="@+id/numRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lblComment"
+        android:layout_alignLeft="@+id/textComment"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@color/black" />
+
+    <ImageButton
+        android:id="@+id/tripLikeBtn"
+        android:contentDescription="@string/likeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submitButton"
+        android:layout_marginBottom="38dp"
+        android:layout_toLeftOf="@+id/tripDislikeBtn"
+        android:src="@drawable/thumb_up" />
+
+</RelativeLayout>

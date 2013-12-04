@@ -1,3 +1,4 @@
+//041213 - MtpA -	Added new temporary button for reaching the destination
 //031213 - MtpA -	Add click listener for marker
 //281113 - MtpA -	Only search for location if marker not already set
 //271113 - MtpA -	Added code for ratings button
@@ -81,6 +82,7 @@ public class MainActivity extends Activity implements LocationListener, OnMarker
 	private ImageButton tripsButton;
 	private ImageButton saveButton;
 	private ImageButton refreshButton;
+	private ImageButton finishButton;
 	private Button destinationButton;
 	private MarkerOptions myMarker;
 	private String provider;
@@ -116,6 +118,8 @@ public class MainActivity extends Activity implements LocationListener, OnMarker
 		ratingsButton.setOnClickListener(new ratingsBtnListener());
 		destinationButton = (Button) findViewById(R.id.destinationsButton);
 		destinationButton.setOnClickListener(new destBtnListener());
+		finishButton = (ImageButton) findViewById(R.id.endtripBtn);
+		finishButton.setOnClickListener(new finishBtnListener());
 
 		if (initilizeMap()) {
 			googleMap.setOnMarkerClickListener(this);
@@ -197,30 +201,13 @@ public class MainActivity extends Activity implements LocationListener, OnMarker
 		}
 	}
 	
-	/*class providerBtnListener implements View.OnClickListener {
+	class finishBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
-			// mtpa temp
-			// Launching new Activity on selecting single List Item
-			//			Intent i = new Intent(getApplicationContext(), AndroidProviderList.class);
-			// sending data to new activity
-			//			startActivity(i);
-
-			resourceVals = getResources();
-			XMLImport importFile = new XMLImport();
-			ConfirmRegister regData;
-			try {
-				String xmlData = importFile.readSDXMLData(resourceVals.getString(R.string.registerXmlDir), resourceVals.getString(R.string.registerXmlFileName));				
-				XMLImport parserXML = new XMLImport();
-				regData = parserXML.importConfirmRegister(xmlData);
-				Toast.makeText(getBaseContext(),"Registered > " + regData.getDeviceID() + "<>" + regData.getSessionID(), Toast.LENGTH_LONG).show();
-			} catch (Exception e) {
-				Toast.makeText(getBaseContext(),"All fell apart reading in destinations", Toast.LENGTH_LONG).show();
-			}
-
-			// mtpa temp
-		} // method onClick
-	} // class providerBtnListener
+			Intent finishIntent = new Intent(getApplicationContext(), Rating.class);
+			startActivity(finishIntent);
+		}
+	}
 
 	/**
 	 * function to load map. If map is not created it will create it for you
