@@ -171,7 +171,7 @@ public class Lifter extends Activity {
 
                 tvDisplayDate = (TextView) findViewById(R.id.tvDate);
                 dpResult = (DatePicker) findViewById(R.id.dpResult);
-                dpResult.setVisibility(TRIM_MEMORY_UI_HIDDEN);
+                dpResult.setVisibility(View.INVISIBLE);
 
                 final Calendar c = Calendar.getInstance();
                 year = c.get(Calendar.YEAR);
@@ -193,7 +193,7 @@ public class Lifter extends Activity {
                  
                 tvDisplayTime = (TextView) findViewById(R.id.tvTime);
                 timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
-                timePicker1.setVisibility(TRIM_MEMORY_UI_HIDDEN);
+                timePicker1.setVisibility(View.INVISIBLE);
  
                 final Calendar c = Calendar.getInstance();
                 hour = c.get(Calendar.HOUR_OF_DAY);
