@@ -15,41 +15,17 @@ import android.widget.Toast;
 
 public class Rating extends Activity {
 
-	private ImageButton likeButton;
-	private ImageButton dislikeButton;
-	private Button submitButton;
+	private Button sendReviewButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.ratings);
-		likeButton = (ImageButton) findViewById(R.id.tripLikeBtn);
-		likeButton.setOnClickListener(new likeBtnListener());
-		likeButton.setBackgroundColor(Color.parseColor("#ffffff"));
-		dislikeButton = (ImageButton) findViewById(R.id.tripDislikeBtn);
-		dislikeButton.setOnClickListener(new dislikeBtnListener());
-		dislikeButton.setBackgroundColor(Color.parseColor("#ffffff"));
-		submitButton = (Button) findViewById(R.id.submitButton);
-		submitButton.setOnClickListener(new submitBtnListener());
+		setContentView(R.layout.trip_summary);
+		sendReviewButton = (Button) findViewById(R.id.sendReviewButton);
+		sendReviewButton.setOnClickListener(new sendBtnListener());
 	} // method onCreate
 	
-	class likeBtnListener implements View.OnClickListener {
-		@Override
-		public void onClick(View v) {
-			likeButton.setBackgroundColor(Color.parseColor("#808080"));
-			dislikeButton.setBackgroundColor(Color.parseColor("#ffffff"));
-		}
-	}
-	
-	class dislikeBtnListener implements View.OnClickListener {
-		@Override
-		public void onClick(View v) {
-			dislikeButton.setBackgroundColor(Color.parseColor("#808080"));
-			likeButton.setBackgroundColor(Color.parseColor("#ffffff"));
-		}
-	}
-
-	class submitBtnListener implements View.OnClickListener {
+	class sendBtnListener implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
 			Toast.makeText(getBaseContext(),"Submitting request", Toast.LENGTH_LONG).show();			

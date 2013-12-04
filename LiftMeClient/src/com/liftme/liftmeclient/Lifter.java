@@ -77,7 +77,7 @@ public class Lifter extends Activity {
                 btnSaveTrip.setOnClickListener(new saveTripBtnListener());
                 
                 btnSeeRequests = (Button) findViewById(R.id.requestsButton);
-                btnSaveTrip.setOnClickListener(new seeRequestsBtnListener());
+                btnSeeRequests.setOnClickListener(new seeRequestsBtnListener());
 
         }
 
@@ -141,8 +141,6 @@ public class Lifter extends Activity {
             public void onClick(View v) {
                     Intent goIntent = new Intent(getApplicationContext(), Requests.class);
                     goIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    String str="Lifter";
-                    goIntent.putExtra("Activity", str);
                     startActivity(goIntent);
             }
     }

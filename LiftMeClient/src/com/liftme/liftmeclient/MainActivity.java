@@ -123,7 +123,10 @@ public class MainActivity extends Activity implements LocationListener, OnMarker
 
 		if (initilizeMap()) {
 			googleMap.setOnMarkerClickListener(this);
-			onLocationChanged(location);
+			lat = 50.866008;
+			lng = -0.087281;
+			setCurrentLocation(lat, lng);
+//			onLocationChanged(location);
 		} else {
 			Toast.makeText(getBaseContext(),"Waiting for current location", Toast.LENGTH_LONG).show();
 		} // try and refresh maps
@@ -258,6 +261,9 @@ public class MainActivity extends Activity implements LocationListener, OnMarker
 			Toast.makeText(getBaseContext(),"Lifts offered to : " + selectedDest, Toast.LENGTH_LONG).show();
 		}
 		if (initilizeMap()) {
+			lat = 50.866008;
+			lng = -0.087281;
+			setCurrentLocation(lat, lng);
 			Toast.makeText(getBaseContext(),"Resume location : " + Double.toString(lat).substring(0, 5) + "," + Double.toString(lng).substring(0, 5), Toast.LENGTH_LONG).show();
 		} else {
 			Toast.makeText(getApplicationContext(),"Waiting on exact location", Toast.LENGTH_SHORT).show();
@@ -283,13 +289,15 @@ public class MainActivity extends Activity implements LocationListener, OnMarker
 	@Override
 	public void onLocationChanged(Location location) {
 		// get current location
-/*		lat = (double) (location.getLatitude());
+		lat = (double) (location.getLatitude());
 		lng = (double) (location.getLongitude());
-*/
-		lat = 50.866008;
-		lng = -0.087281;
-		LatLng currPos = new LatLng(lat, lng);
 
+		setCurrentLocation(lat, lng);
+		Toast.makeText(getBaseContext(),"Current location : " + Double.toString(lat).substring(0, 5) + "," + Double.toString(lng).substring(0, 5), Toast.LENGTH_LONG).show();
+	} // onLocationChanged
+
+	private void setCurrentLocation(double vLat, double vLng) {
+		LatLng currPos = new LatLng(vLat, vLng);
 		// set camera zoom level
 		float cameraZoom = (googleMap.getMinZoomLevel() + googleMap.getMaxZoomLevel())/2;
 
@@ -309,9 +317,7 @@ public class MainActivity extends Activity implements LocationListener, OnMarker
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Toast.makeText(getBaseContext(),"Current location : " + Double.toString(lat).substring(0, 5) + "," + Double.toString(lng).substring(0, 5), Toast.LENGTH_LONG).show();
-	} // onLocationChanged
-    
+	}
 	@Override
     public boolean onMarkerClick(final Marker marker) {
 		Toast.makeText(getBaseContext(),"You selected : " + marker.getTitle(), Toast.LENGTH_LONG).show();

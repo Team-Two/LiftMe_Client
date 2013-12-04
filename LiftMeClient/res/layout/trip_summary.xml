@@ -105,10 +105,12 @@
             android:layout_width="258dp"
             android:layout_height="75dp"
             android:ems="10"
-            android:inputType="textMultiLine" >
+            android:inputType="textMultiLine"
+            android:maxLines="@integer/maxCommentLines"
+            android:textColor="@color/black" />
 
-            <requestFocus />
-        </EditText>
+        <requestFocus />
+
     </LinearLayout>
 
     <Button

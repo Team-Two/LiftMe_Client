@@ -26,8 +26,9 @@
         android:src="@drawable/line" />
     
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/reqlist"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="25dp" />
 
 </LinearLayout>

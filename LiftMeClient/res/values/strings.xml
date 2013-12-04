@@ -17,7 +17,7 @@
     <string name="lifterXmlFileName">Lifter.xml</string>
     <string name="statsXmlFileName">ZZ_Stats.xml</string>
     <string name="tripsXmlFileName">ZZ_Trips.xml</string>
-    <string name="requestsXmlFileName">ZZ_Trips.xml</string>
+    <string name="requestsXmlFileName">ZZ_Requests.xml</string>
     <string name="caricon">Car icon</string>
     <string name="diskicon">Disk icon</string>
     <string name="likeBtn">Like Button</string>

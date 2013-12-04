@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,12 +27,12 @@ public class Requests extends Activity {
 		setContentView(R.layout.request_list_title);
 		getRequests();
 		// Setup the list view
-		final ListView prevTripsListView = (ListView) findViewById(R.id.list);
-		final RequestsAdapter prevTripsAdapter = new RequestsAdapter(this, R.layout.request_list);
-		prevTripsListView.setAdapter(prevTripsAdapter);
+		final ListView requestsListView = (ListView) findViewById(R.id.reqlist);
+		final RequestsAdapter requestTripsAdapter = new RequestsAdapter(this, R.layout.request_list);
+		requestsListView.setAdapter(requestTripsAdapter);
 		// Populate the list, through the adapter
 		for(TripRequest currTrip : requests) {
-			prevTripsAdapter.add(currTrip);
+			requestTripsAdapter.add(currTrip);
 		}
 	} // method onCreate
 	
@@ -65,6 +66,8 @@ public class Requests extends Activity {
 		public TextView timeView;
 		public TextView lifteeView;
 		public TextView statusView;
+		public Button btnAccepted;
+		public Button btnDeclined;
 	}
 	
 	public final class RequestsAdapter extends ArrayAdapter<TripRequest> {
@@ -88,11 +91,13 @@ public class Requests extends Activity {
 			viewHolder.timeView.setText(prevTrip.getTime());
 			viewHolder.lifteeView.setText(prevTrip.getLiftee());
 			
-			if(prevTrip.getStatus()!="Requested"){
-				viewHolder.statusView.setText(prevTrip.getStatus());
+			if(prevTrip.getStatus().equals("Requested")){
+				viewHolder.statusView.setText("");
 			}
 			else{
-				viewHolder.statusView.setText(" ");
+				viewHolder.btnAccepted.setVisibility(View.INVISIBLE);
+				viewHolder.btnDeclined.setVisibility(View.INVISIBLE);
+				viewHolder.statusView.setText(prevTrip.getStatus());
 			}
 			return view;
 		}
@@ -122,11 +127,10 @@ public class Requests extends Activity {
 				viewHolder.dateView = (TextView) workingView.findViewById(R.id.tripdate);
 				viewHolder.timeView = (TextView) workingView.findViewById(R.id.triptime);
 				viewHolder.lifteeView = (TextView) workingView.findViewById(R.id.username);
+				viewHolder.statusView = (TextView) workingView.findViewById(R.id.status);
+				viewHolder.btnAccepted = (Button) workingView.findViewById(R.id.btnAccept);
+				viewHolder.btnDeclined = (Button) workingView.findViewById(R.id.btnDecline);
 				
-				if(viewHolder.statusView.getText()!=" "){
-					workingView.findViewById(R.id.btnAccept).setVisibility(View.INVISIBLE);
-					workingView.findViewById(R.id.btnDecline).setVisibility(View.INVISIBLE);
-				}
 				workingView.setTag(viewHolder);
 			} else {
 				viewHolder = (ViewHolder) tag;
