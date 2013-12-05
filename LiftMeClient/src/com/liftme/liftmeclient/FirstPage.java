@@ -144,7 +144,7 @@ ConnectionCallbacks, OnConnectionFailedListener {
 		        Toast.makeText(getBaseContext(),userXML, Toast.LENGTH_LONG).show();
 			}
 			
-			//mat.execute(userEmail,userName,userPass);
+			mat.execute(userEmail,userName,userPass);
 			
 			Intent intent = new Intent(FirstPage.this, UserOption.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -225,7 +225,6 @@ ConnectionCallbacks, OnConnectionFailedListener {
 	public void onDisconnected() {
 		Log.d(TAG, "disconnected");
 	}
-
 
 	private class MyAsyncTask extends AsyncTask<String, Integer, Double>{
 

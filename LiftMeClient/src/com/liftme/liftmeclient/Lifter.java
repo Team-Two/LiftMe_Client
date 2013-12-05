@@ -4,26 +4,34 @@
 //241113 - MtpA -        Created class
 package com.liftme.liftmeclient;
 
-import java.security.Provider;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-import com.liftme.liftmeclient.MainActivity.destBtnListener;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -116,12 +124,22 @@ public class Lifter extends Activity {
             	
     			currLoc = new CurrentLocation(getApplicationContext());
     			thisLoc = currLoc.getLocation();
-    			int lifterNum = (int) (Math.random() * 5);
+    			int lifterNum = (int) (Math.random() * 4);
     			String[] lifterDetails = lifters[lifterNum].split(":");
     			String lifterName = lifterDetails[0];
     			String lifterLat = Double.toString(currLoc.getLatitude());
     			String lifterLong = Double.toString(currLoc.getLongitude());
-    			LifterTrip currLift = new LifterTrip(lifterName, selectedDest, selectedLat, selectedLong, lifterLat, lifterLong, YYYY_MM_DD, HH_MM_SS);
+    			
+    			AddRouteAsyncTask mat = new AddRouteAsyncTask();;
+    			
+    			String dateStr = YYYY_MM_DD + " " + HH_MM_SS;
+    			// for server 
+				
+    			mat.execute("1",lifterLat,lifterLong,selectedLat,selectedLong,dateStr,"NewRoute");
+    			
+    			LifterTrip currLift = new LifterTrip(lifterName,selectedDest,selectedLat,selectedLong,lifterLat,lifterLong,YYYY_MM_DD,HH_MM_SS);
+    			
+    			
 				XMLExport loginXML = new XMLExport();
 				String tripXML = loginXML.createTripXml(currLift, deviceId);
 		        Toast.makeText(getBaseContext(),tripXML, Toast.LENGTH_LONG).show();
@@ -276,4 +294,56 @@ public class Lifter extends Activity {
                 else
                    return "0" + String.valueOf(c);
         }
+        
+    	private class AddRouteAsyncTask extends AsyncTask<String, Integer, Double>{
+
+    		@Override
+    		protected Double doInBackground(String... params) {
+    			// TODO Auto-generated method stub
+    			postData(params);
+    			return null;
+    		}
+
+    		protected void onPostExecute(Double result){
+    			//pb.setVisibility(View.GONE);
+    			Toast.makeText(getApplicationContext(), "Code Sent", Toast.LENGTH_LONG).show();
+    		}
+    		protected void onProgressUpdate(Integer... progress){
+    			//pb.setProgress(progress[0]);
+    		}
+
+    		public void postData(String... valueIWantToSend) {
+    			// Create a new HttpClient and Post Header
+    			HttpClient httpclient = new DefaultHttpClient();
+    			HttpPost httppost = new HttpPost("http://10.0.56.153:8080/com.liftme/rest/manipulateroutes");
+    			try {
+
+    				// Add your data
+    				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+    				//mtpa temp - establish connection with temp data
+    				
+    				nameValuePairs.add(new BasicNameValuePair("userID", valueIWantToSend[0]));
+    				nameValuePairs.add(new BasicNameValuePair("startLat", valueIWantToSend[1]));
+    				nameValuePairs.add(new BasicNameValuePair("startLong", valueIWantToSend[2]));
+    				nameValuePairs.add(new BasicNameValuePair("endLat", valueIWantToSend[3]));
+    				nameValuePairs.add(new BasicNameValuePair("endLong", valueIWantToSend[4]));
+    				nameValuePairs.add(new BasicNameValuePair("timeOfStart", valueIWantToSend[5]));
+    				nameValuePairs.add(new BasicNameValuePair("nameOfRoutes", valueIWantToSend[6]));
+    				
+    				//mtpa temp - establish connection with temp data
+    				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+    				Log.i("asdf","before");
+    				HttpResponse response = httpclient.execute(httppost);
+    				Log.i("asdf",response.toString());
+    			}
+    			catch (ClientProtocolException e) 
+    			{
+    				// TODO Auto-generated catch block
+    			} catch (IOException e)
+    			{
+    				// TODO Auto-generated catch block
+    			}
+    		}
+    	}
 }
